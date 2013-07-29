@@ -43,23 +43,34 @@ class WPApps_Metaboxes {
             'pages' => 'event',
             'fields' => [
                 ['id' => 'logo', 'name' => __('Event Logo', WPAPPS_TRANS), 'type' => 'image'],
+				['id' => 'abbreviated_title', 'name' => __('Abbreviated Title', WPAPPS_TRANS), 'type' => 'text'],
                 ['id' => 'when_start', 'name' => __('Event Start', WPAPPS_TRANS), 'type' => 'datetime_unix'],
                 ['id' => 'when_end', 'name' => __('Event End', WPAPPS_TRANS), 'type' => 'datetime_unix'],
                 ['id' => 'location', 'name' => __('Event Location', WPAPPS_TRANS), 'type' => 'textarea'],
-                ['id' => 'organizer', 'name' => __('Event Organizer', WPAPPS_TRANS), 'type' => 'textarea'],
+                //['id' => 'organizer', 'name' => __('Event Organizer', WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'edition', 'name' => __('Edition', WPAPPS_TRANS), 'type' => 'text'],
                 ['id' => 'register_url', 'name' => __('Registration link', WPAPPS_TRANS), 'type' => 'text_url']
             ],
             'context' => 'side',
             'priority' => 'high'
         ];
+		$meta_boxes[] = [
+            'title' => __('Organizer', WPAPPS_TRANS),
+            'pages' => 'event',
+            'fields' => [
+                ['id' => 'organizer', 'name' => __("Organizer", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'organizer-name', 'name' => __('Organizer name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
+                    ['id' => 'organizer-website', 'name' => __('Organizer website', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2]
+                ]]
+            ]
+        ];
         $meta_boxes[] = [
             'title' => __('Jury', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => [
                 ['id' => 'jury', 'name' => __("Jury member", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
-                    ['id' => 'agent-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text'],
-                    ['id' => 'agent-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text']
+                    ['id' => 'agent-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
+                    ['id' => 'agent-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2]
                 ]]
             ]
         ];
@@ -77,7 +88,10 @@ class WPApps_Metaboxes {
             'title' => __('Sponsors', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => [
-                ['id' => 'sponsor', 'name' => __("Sponsor", WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true]
+                ['id' => 'sponsor', 'name' => __("Sponsor", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'sponsor-name', 'name' => __("Sponsor name", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
+                    ['id' => 'sponsor-website', 'name' => __("Sponsor website", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2]
+                ]]
             ]
         ];
         return $meta_boxes;
