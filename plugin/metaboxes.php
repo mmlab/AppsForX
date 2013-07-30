@@ -102,7 +102,7 @@ class WPApps_Metaboxes {
             'title' => _x('Information', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => [
-                ['id' => 'summary', 'name' => __("Summary", WPAPPS_TRANS), 'type' => 'textarea'],
+                ['id' => 'summary', 'name' => __("Keywords", WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'theme', 'name' => __("Theme", WPAPPS_TRANS), 'type' => 'select', 'options' => [
                     '' => _x('Select theme', 'theme', WPAPPS_TRANS),
                     'theme-administration' => _x('Public administration & policy', 'theme', WPAPPS_TRANS),
@@ -127,6 +127,22 @@ class WPApps_Metaboxes {
             'priority' => 'high'
         ];
         $meta_boxes[] = [
+            'title' => __('Conceivers', 'idea-edit', WPAPPS_TRANS),
+            'pages' => 'idea',
+            'fields' => [
+                ['id' => 'conceivers', 'name' => __("Conceivers", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'conceiver-name', 'name' => __('Conceiver Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'conceiver-surname', 'name' => __('Conceiver Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'conceiver-affiliation', 'name' => __('Conceiver affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'conceiver-email', 'name' => __('Conceiver e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2]
+                ]
+                ] 
+                // ['id' => 'contact', 'name' => __('Contact', WPAPPS_TRANS), 'type' => 'text'] // should have email/phone number? -> make abstract
+            ]
+        ];
+        /*
+        $meta_boxes[] = [
             'title' => _x('People', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => [
@@ -135,6 +151,7 @@ class WPApps_Metaboxes {
                 // revisions (revises|revised|implements)
             ]
         ];
+        */
         return $meta_boxes;
     }
 
@@ -143,7 +160,7 @@ class WPApps_Metaboxes {
             'title' => _x("Information", 'app-edit', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => [
-                ['id' => 'keyword', 'name' => __("Summary", WPAPPS_TRANS), 'type' => 'textarea'],
+                ['id' => 'keyword', 'name' => __("Keywords", WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'homepage', 'name' => __("Homepage", WPAPPS_TRANS), 'type' => 'text_url'],
                 ['id' => 'download_url', 'name' => __("Download URL", WPAPPS_TRANS), 'type' => 'text_url'],
                 ['id' => 'license', 'name' => __("License", WPAPPS_TRANS), 'type' => 'text'] // datatype?
