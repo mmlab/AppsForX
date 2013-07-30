@@ -65,59 +65,67 @@ get_header();
 								<strong>Registration:</strong>
 								<a property="apps4eu:registration" href="<?php echo esc_attr($meta['register_url'][0]); ?>">Register for this event</a>
 							</p>
-						
-							<p>
+
 								<div style="float:left"><strong>Organizer:</strong></div>
-								<div class="entry-content" style="clear:both" about = "<?php echo the_permalink() . "organizer"; ?>">
+								<div class="entry-content" style="clear:both" rel = "apps4eu:organizer">
 									<?php foreach((array)$meta['organizer'] as $organizer) {
 										$organizer = unserialize($organizer);
 										list($organizer_name, $organizer_website) = array(esc_attr($organizer['organizer-name']), esc_attr($organizer['organizer-website']));
 									?>
-										<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="apps4eu:organizer" instanceof="foaf:Agent">
-											<?php echo $organizer_name; ?>
+									<div about = "<?php echo the_permalink() . urlencode($organizer_name); ?>">
+										<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="foaf:url" instanceof="foaf:Agent">
+											<span property = "foaf:name"><?php echo $organizer_name; ?> </span>
 										</a><br style="clear:both" />
+									</div>
 									<?php } ?>
 								</div>
-							</p>
-							<p>
+
 								<div style="float:left"><strong>Sponsors:</strong>&nbsp;</div>
-								<div style="float:left" style="clear:both" about = "<?php echo the_permalink() . "sponsor"; ?>">
+								<div style="float:left" style="clear:both" rel="apps4eu:sponsored">
 									<?php foreach((array)$meta['sponsor'] as $sponsor) {
 										$sponsor = unserialize($sponsor);
 										list($sponsor_name, $sponsor_website) = array(esc_attr($sponsor['sponsor-name']), esc_attr($sponsor['sponsor-website']));
 									?>
-										<a href="<?php echo $sponsor_website; ?>" title="<?php echo $sponsor_name; ?>" rel="bookmark">
-											<?php echo $sponsor_name; ?>
+									<div about = "<?php echo the_permalink() . urlencode($sponsor_name); ?>">
+										<a href="<?php echo $sponsor_website; ?>" title="<?php echo $sponsor_name; ?>" rel="bookmark" property="foaf:url" instanceof="foaf:Agent">
+											<span property="foaf:name"><?php echo $sponsor_name; ?></span>
 										</a>
+									</div>
 									<?php } ?>
+									<br style="clear:both" />
 								</div>
-								<br style="clear:both" />
-							</p>
-							<p>
-								<div style="float:left"><strong>Jury:</strong>&nbsp;</div>
-								<div style="float:left" about = "<?php echo the_permalink() . "jury"; ?>" >
+							<br style="clear:both" />	
+
+								<div style="float:left"><strong>Jury:</strong>&nbsp;</div><br/>
+								<div style="float:left"  rel="apps4eu:jury" >
 									<?php foreach((array)$meta['jury'] as $jury) {
 										$jury = unserialize($jury);
-										list($surname, $lastname) = array(esc_attr($jury['agent-surname']), esc_attr($jury['agent-name']));
+										list($lastname, $name) = array(esc_attr($jury['agent-surname']), esc_attr($jury['agent-name']));
 									?>
-										<span property="apps4eu:jury" instanceof="foaf:Agent"><?php echo $surname.' '.$lastname; ?></span><br />
+										<div about = "<?php echo the_permalink() . urlencode($lastname) ; ?>">
+											<strong>Jury member: </strong> 
+											<br/>
+											<span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
+                                			<span property="foaf:name"> <?php echo $name . "\t" ; ?> </span>
+                                			<br />    
+										</div>	
 									<?php } ?>
 								</div>
 								<br style="clear:both" />
-							</p>
-							<p>
+
 								<div style="float:left"><strong>Awards:</strong>&nbsp;</div>
-								<div style="float:left" about="<?php echo the_permalink() . "award"; ?>">
+								<div style="float:left" rel = "apps4eu:awards">
 									<?php foreach((array)$meta['award'] as $award) {
 										$award = unserialize($award);
 										list($prize, $sponsor) = array(esc_attr($award['award-prize']), esc_attr($award['award-sponsor']));
 										?>
-										<span property="apps4eu:prize"><?php echo $prize; ?></span> offered by
-										<span property="apps4eu:sponsor" instanceof="foaf:Agent"><?php echo $sponsor; ?></span><br />
+										<div about = "<?php echo the_permalink() . urlencode($prize) ; ?>">
+											<span property="apps4eu:prize"><?php echo $prize; ?></span> offered by
+											<span property="apps4eu:sponsor" instanceof="foaf:Agent"><?php echo $sponsor; ?></span><br />
+										</div>
 									<?php } ?>
 								</div>
 								<br style="clear:both" />
-							</p>
 						</div>
 						<!-- <hr /> -->
 						<?php if ( $connected->have_posts() ) : ?>
