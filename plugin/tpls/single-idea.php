@@ -38,7 +38,13 @@ get_header();
                     <div class="entry-content" style="float:left" about = "<?php echo the_permalink(); ?>" >
                         <p>
                             <strong>Keywords:</strong>
-                            <span property="odapps:keyword"><?php echo esc_attr($meta['summary'][0]); ?></span>
+                            <?php 
+                                $keywords = explode(",", $meta['summary'][0]);
+                                foreach((array)$keywords as $keyword) { ?>
+                                    <span property="odapps:keyword">
+                                        <?php echo $keyword; ?>
+                                    </span>     
+                            <?php } ?>
                         </p>
                     </div><!-- .entry-content -->
                     <br style="clear:both" />
@@ -82,10 +88,6 @@ get_header();
                             <?php } ?>
                         </div>
                         <br style="clear:both" />
-                        </p>
-                        <p>
-                            <strong>Contact:</strong>
-                            <span property="odapps:contact" instanceof="foaf:Agent"><?php echo esc_attr($meta['contact'][0]); ?></span>
                         </p>
                         <p>
                             <strong>Homepage:</strong>

@@ -72,7 +72,7 @@ get_header();
 										$organizer = unserialize($organizer);
 										list($organizer_name, $organizer_website) = array(esc_attr($organizer['organizer-name']), esc_attr($organizer['organizer-website']));
 									?>
-									<div about = "<?php echo the_permalink() . urlencode($organizer_name); ?>">
+									<div about = "<?php echo "http://apps4eu.eu/cocreation_events/" . urlencode($organizer_name); ?>">
 										<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="foaf:url" instanceof="foaf:Agent">
 											<span property = "foaf:name"><?php echo $organizer_name; ?> </span>
 										</a><br style="clear:both" />
@@ -95,9 +95,9 @@ get_header();
 									<br style="clear:both" />
 								</div>
 							<br style="clear:both" />	
-							<div rel="apps4eu:juryMember" >
+							<div rel="apps4eu:jury" >
 								<div style="float:left" ><strong>Jury:</strong>&nbsp;</div><br/>
-								<div style="float:left"  rel="apps4eu:jury" >
+								<div style="float:left"  rel="apps4eu:juryMember" >
 									<?php foreach((array)$meta['jury'] as $jury) {
 										$jury = unserialize($jury);
 										list($lastname, $name) = array(esc_attr($jury['agent-surname']), esc_attr($jury['agent-name']));
@@ -117,11 +117,16 @@ get_header();
 								<div style="float:left" rel = "apps4eu:awards">
 									<?php foreach((array)$meta['award'] as $award) {
 										$award = unserialize($award);
-										list($prize, $sponsor) = array(esc_attr($award['award-prize']), esc_attr($award['award-sponsor']));
+										list($prize, $award_sponsor_name, $award_sponsor_website) = array(esc_attr($award['award-prize']), esc_attr($award['award-sponsor-name']), esc_attr($award['award-sponsor-website']));
 										?>
 										<div about = "<?php echo the_permalink() . urlencode($prize) ; ?>">
-											<span property="apps4eu:prize"><?php echo $prize; ?></span> offered by
-											<span property="apps4eu:sponsor" instanceof="foaf:Agent"><?php echo $sponsor; ?></span><br />
+											<span property="apps4eu:prize" ><?php echo $prize; ?></span> offered by
+											<span rel="apps4eu:sponsor" instanceof="foaf:Agent" >
+												<a href="<?php echo $award_sponsor_website; ?>" title="<?php echo $award_sponsor_name; ?>" rel="bookmark" property="foaf:url" about = "<?php echo "http://apps4eu.eu/cocreation_event/" . $award_sponsor_name ?> ">
+													<span property="foaf:name"><?php echo $award_sponsor_name; ?></span>
+												</a>
+											</span>
+											<br />
 										</div>
 									<?php } ?>
 								</div>
