@@ -172,7 +172,13 @@ class WPApps_Metaboxes {
             'title' => __("Credits", WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => [
-                ['id' => 'creators', 'name' => __('Creators', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true],
+                ['id' => 'creators', 'name' => __("Creators", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'creator-name', 'name' => __('Creator Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'creator-surname', 'name' => __('Creator Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'creator-affiliation', 'name' => __('Creator affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'creator-email', 'name' => __('Creator e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2]
+                ]],
                 ['id' => 'designby', 'name' => __('Design by', WPAPPS_TRANS), 'type' => 'text']
             ]
         ];
@@ -180,7 +186,10 @@ class WPApps_Metaboxes {
             'title' => __("Datasets & tools", WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => [
-                ['id' => 'consumes', 'name' => __('Datasets', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true],
+                ['id' => 'datasets', 'name' => __("Datasets", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2] ,
+                    ['id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] 
+                ]],
                 ['id' => 'tools', 'name' => __('Tools', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true]
             ]
         ];

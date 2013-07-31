@@ -95,8 +95,8 @@ get_header();
 									<br style="clear:both" />
 								</div>
 							<br style="clear:both" />	
-
-								<div style="float:left"><strong>Jury:</strong>&nbsp;</div><br/>
+							<div rel="apps4eu:juryMember" >
+								<div style="float:left" ><strong>Jury:</strong>&nbsp;</div><br/>
 								<div style="float:left"  rel="apps4eu:jury" >
 									<?php foreach((array)$meta['jury'] as $jury) {
 										$jury = unserialize($jury);
@@ -112,7 +112,7 @@ get_header();
 									<?php } ?>
 								</div>
 								<br style="clear:both" />
-
+							</div>
 								<div style="float:left"><strong>Awards:</strong>&nbsp;</div>
 								<div style="float:left" rel = "apps4eu:awards">
 									<?php foreach((array)$meta['award'] as $award) {
@@ -132,9 +132,11 @@ get_header();
 							<div class="entry-content">
 								<h3>Ideas</h3>
 								<ul>
-									<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-										<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-									<?php endwhile; ?>
+									<span rel="apps4eu:submission">
+										<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
+											<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+										<?php endwhile; ?>
+									</span>
 								</ul>
 							</div>
 						<?php endif; ?>

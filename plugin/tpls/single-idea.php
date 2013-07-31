@@ -94,7 +94,7 @@ get_header();
                     </div>
                     <hr />
                     <?php if ( $connected->have_posts() ) : ?>
-                        <div class="entry-content" style="clear:both">
+                        <div class="entry-content" style="clear:both" rel="oadapps:implemented">
                             <h3>Applications</h3>
                             <ul>
                                 <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
