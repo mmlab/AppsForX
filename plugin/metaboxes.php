@@ -49,11 +49,45 @@ class WPApps_Metaboxes {
                 ['id' => 'location', 'name' => __('Event Location', WPAPPS_TRANS), 'type' => 'textarea'],
                 //['id' => 'organizer', 'name' => __('Event Organizer', WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'edition', 'name' => __('Edition', WPAPPS_TRANS), 'type' => 'text'],
-                ['id' => 'register_url', 'name' => __('Registration link', WPAPPS_TRANS), 'type' => 'text_url']
+                ['id' => 'register_url', 'name' => __('Registration link', WPAPPS_TRANS), 'type' => 'text_url'],
+                ['id' => 'theme', 'name' => __("Theme", WPAPPS_TRANS), 'type' => 'select', 'options' => [
+                    '' => _x('Select theme', 'theme', WPAPPS_TRANS),
+                    'Public administration & policy' => _x('Public administration & policy', 'theme', WPAPPS_TRANS),
+                    'Population' => _x('Population', 'theme', WPAPPS_TRANS),
+                    'Culture/Sport/Leisure time' => _x('Culture/Sport/Leisure time', 'theme', WPAPPS_TRANS),
+                    'Territory' => _x('Territory', 'theme', WPAPPS_TRANS),
+                    'Health' => _x('Health', 'theme', WPAPPS_TRANS),
+                    'Infrastructure' => _x('Infrastructure', 'theme', WPAPPS_TRANS),
+                    'Audience (Youth/Adult/Senior)' => _x('Audience (Youth/Adult/Senior)', 'theme', WPAPPS_TRANS),
+                    'Environment' => _x('Environment & Nature', 'theme', WPAPPS_TRANS),
+                    'Education & Lifelong learning' => _x('Education & Lifelong learning', 'theme', WPAPPS_TRANS),
+                    'Tourism' => _x('Tourism', 'theme', WPAPPS_TRANS),
+                    'Safety' => _x('Safety', 'theme', WPAPPS_TRANS),
+                    'Welfare' => _x('Welfare', 'theme', WPAPPS_TRANS),
+                    'Work & Economy' => _x('Work & Economy', 'theme', WPAPPS_TRANS),
+                    'Life Home' => _x('Life/Home', 'theme', WPAPPS_TRANS)
+                ]],
+                
             ],
             'context' => 'side',
             'priority' => 'high'
         ];
+
+        $meta_boxes[] = [
+            'title' => _x('Contact Point', 'event-edit', WPAPPS_TRANS),
+            'pages' => 'event',
+            'fields' => [
+                ['id' => 'event-contact-point', 'name' => __("Contact Point", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'contact-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'contact-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'contact-email', 'name' => __('E-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
+                    ['id' => 'contact-phone', 'name' => __('Phone Number', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
+                    ['id' => 'contact-fax', 'name' => __('Fax Number', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2]
+                ]],
+            ]
+        ];
+
+
 		$meta_boxes[] = [
             'title' => __('Organizer', WPAPPS_TRANS),
             'pages' => 'event',
@@ -113,27 +147,33 @@ class WPApps_Metaboxes {
                 ['id' => 'summary', 'name' => __("Keywords", WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'theme', 'name' => __("Theme", WPAPPS_TRANS), 'type' => 'select', 'options' => [
                     '' => _x('Select theme', 'theme', WPAPPS_TRANS),
-                    'theme-administration' => _x('Public administration & policy', 'theme', WPAPPS_TRANS),
-                    'theme-population' => _x('Population', 'theme', WPAPPS_TRANS),
-                    'theme-culture' => _x('Culture/Sport/Leisure time', 'theme', WPAPPS_TRANS),
-                    'theme-territory' => _x('Territory', 'theme', WPAPPS_TRANS),
-                    'theme-health' => _x('Health', 'theme', WPAPPS_TRANS),
-                    'theme-infrastructure' => _x('Infrastructure', 'theme', WPAPPS_TRANS),
-                    'theme-audience' => _x('Audience (Youth/Adult/Senior)', 'theme', WPAPPS_TRANS),
-                    'theme-environment' => _x('Environment & Nature', 'theme', WPAPPS_TRANS),
-                    'theme-education' => _x('Education & Lifelong learning', 'theme', WPAPPS_TRANS),
-                    'theme-tourism' => _x('Tourism', 'theme', WPAPPS_TRANS),
-                    'theme-safety' => _x('Safety', 'theme', WPAPPS_TRANS),
-                    'theme-welfare' => _x('Welfare', 'theme', WPAPPS_TRANS),
-                    'theme-economy' => _x('Work & Economy', 'theme', WPAPPS_TRANS),
-                    'theme-lifehome' => _x('Life/Home', 'theme', WPAPPS_TRANS)
+                    'Public administration & policy' => _x('Public administration & policy', 'theme', WPAPPS_TRANS),
+                    'Population' => _x('Population', 'theme', WPAPPS_TRANS),
+                    'Culture/Sport/Leisure time' => _x('Culture/Sport/Leisure time', 'theme', WPAPPS_TRANS),
+                    'Territory' => _x('Territory', 'theme', WPAPPS_TRANS),
+                    'Health' => _x('Health', 'theme', WPAPPS_TRANS),
+                    'Infrastructure' => _x('Infrastructure', 'theme', WPAPPS_TRANS),
+                    'Audience (Youth/Adult/Senior)' => _x('Audience (Youth/Adult/Senior)', 'theme', WPAPPS_TRANS),
+                    'Environment & Nature' => _x('Environment & Nature', 'theme', WPAPPS_TRANS),
+                    'Education & Lifelong learning' => _x('Education & Lifelong learning', 'theme', WPAPPS_TRANS),
+                    'Tourism' => _x('Tourism', 'theme', WPAPPS_TRANS),
+                    'Safety' => _x('Safety', 'theme', WPAPPS_TRANS),
+                    'Welfare' => _x('Welfare', 'theme', WPAPPS_TRANS),
+                    'Economy' => _x('Work & Economy', 'theme', WPAPPS_TRANS),
+                    'Lifehome' => _x('Life/Home', 'theme', WPAPPS_TRANS)
                 ]],
                 ['id' => 'homepage', 'name' => __("Homepage", WPAPPS_TRANS), 'type' => 'text_url'],
-                ['id' => 'language', 'name' => __("Language", WPAPPS_TRANS), 'type' => 'text', 'desc' => __("The language used to describe the idea.<br />Eg. 'Dutch'", WPAPPS_TRANS)]
+                ['id' => 'language', 'name' => __("Language", WPAPPS_TRANS), 'type' => 'text', 'desc' => __("The language used to describe the idea.<br />Eg. 'Dutch'", WPAPPS_TRANS)],
+                ['id' => 'ori-deri', 'name' => _x("Original Vs Derivative Work", 'original-derivative', WPAPPS_TRANS), 'type' => 'select', 'options' => [
+                    '' => _x('Other', 'original-derivative', WPAPPS_TRANS),
+                    'Original Work' => _x('Original Work', 'original-derivative', WPAPPS_TRANS),
+                    'Derivative Work' => _x('Derivative Work', 'original-derivative', WPAPPS_TRANS)
+                ]],
             ],
             'context' => 'side',
             'priority' => 'high'
         ];
+
         $meta_boxes[] = [
             'title' => __('Conceivers', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
@@ -147,6 +187,17 @@ class WPApps_Metaboxes {
                 ]
                 ] 
                 // ['id' => 'contact', 'name' => __('Contact', WPAPPS_TRANS), 'type' => 'text'] // should have email/phone number? -> make abstract
+            ]
+        ];
+
+        $meta_boxes[] = [
+            'title' => __("Datasets", 'idea-edit', WPAPPS_TRANS),
+            'pages' => 'idea',
+            'fields' => [
+                ['id' => 'datasets', 'name' => __("Datasets", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
+                    ['id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2] ,
+                    ['id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] 
+                ]]
             ]
         ];
         /*
@@ -188,6 +239,12 @@ class WPApps_Metaboxes {
                     'Eclipse Public License v1.0' => _x('Eclipse Public License v1.0', 'theme', WPAPPS_TRANS),
                     'BSD 2-Clause license' => _x('BSD 2-Clause license', 'theme', WPAPPS_TRANS)
                 ]],
+                ['id' => 'language', 'name' => __("Language", WPAPPS_TRANS), 'type' => 'text', 'desc' => __("The application's language.<br />Eg. 'English', 'Dutch'", WPAPPS_TRANS)],
+                ['id' => 'ori-deri', 'name' => _x("Original Vs Derivative Work", 'original-derivative', WPAPPS_TRANS), 'type' => 'select', 'options' => [
+                    '' => _x('Other', 'original-derivative', WPAPPS_TRANS),
+                    'Original Work' => _x('Original Work', 'original-derivative', WPAPPS_TRANS),
+                    'Derivative Work' => _x('Derivative Work', 'original-derivative', WPAPPS_TRANS)
+                ]],
             ],
             'context' => 'side',
             'priority' => 'high'
@@ -202,23 +259,21 @@ class WPApps_Metaboxes {
                     ['id' => 'creator-affiliation', 'name' => __('Creator affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
                     ['id' => 'creator-email', 'name' => __('Creator e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] ,
                     ['id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2]
-                ]],
-                ['id' => 'designby', 'name' => __('Design by', WPAPPS_TRANS), 'type' => 'text']
+                ]]
             ]
         ];
         $meta_boxes[] = [
-            'title' => __("Datasets & tools", WPAPPS_TRANS),
+            'title' => __("Datasets", WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => [
                 ['id' => 'datasets', 'name' => __("Datasets", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
                     ['id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2] ,
                     ['id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2] 
-                ]],
-                ['id' => 'tools', 'name' => __('Tools', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true]
+                ]]
             ]
         ];
         $meta_boxes[] = [
-            'title' => _x("Platform", 'app-platform-metabox', WPAPPS_TRANS),
+            'title' => _x("Platform & Tools", 'app-platform-metabox', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => [
                 ['id' => 'platform-title', 'name' => _x("Platform", 'app-platform-title', WPAPPS_TRANS), 'type' => 'select', 'options' => [
@@ -226,9 +281,13 @@ class WPApps_Metaboxes {
                     'desktop' => _x('Desktop', 'app-platform', WPAPPS_TRANS),
                     'mobile' => _x('Mobile', 'app-platform', WPAPPS_TRANS)
                 ]],
-                ['id' => 'platform-system', 'name' => _x("System", "app-platform", WPAPPS_TRANS), 'type' => 'text', 'desc' => __('Eg. Windows XP', WPAPPS_TRANS)]
+                ['id' => 'platform-system', 'name' => _x("System", "app-platform", WPAPPS_TRANS), 'type' => 'text', 'desc' => __('Eg. Windows XP', WPAPPS_TRANS)],
+                ['id' => 'tools', 'name' => __('Tools', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true],
+                ['id' => 'softwareVersion', 'name' => __('software Version', WPAPPS_TRANS), 'type' => 'text'],
+                ['id' => 'programmingLanguage', 'name' => __('Programming Language', WPAPPS_TRANS), 'type' => 'text'],
+                ['id' => 'requirements', 'name' => __('Requirements', WPAPPS_TRANS), 'type' => 'textarea']
             ]
         ];
         return $meta_boxes;
-    }
+    }  
 }

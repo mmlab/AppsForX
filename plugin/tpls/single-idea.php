@@ -24,11 +24,13 @@ get_header();
                             apps4eu: http://apps4eu.eu/voc#
                             odapps: http://apps4eu.eu/odapps/voc#
                             foaf: http://xmlns.com/foaf/0.1/
+                            dct: http://purl.org/dc/terms/
+                            dvia: http://data.eurecom.fr/ontology/dvia#
                         typeof="odapps:AppConcept"
                         about = "<?php echo the_permalink(); ?>">
-                    <meta property="dc:language" typeof="dc:LinguisticSystem" content="<?php echo esc_attr($meta['language'][0]); ?>" />
+                    <meta property="dct:language" typeof="dct:LinguisticSystem" content="<?php echo esc_attr($meta['language'][0]); ?>" />
                     <header class="entry-header">
-                        <h1 class="entry-title" property="dc:title">
+                        <h1 class="entry-title" property="dct:title">
                             <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wpapps' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
                                 <?php the_title(); ?>
                             </a>
@@ -41,7 +43,7 @@ get_header();
                             <?php 
                                 $keywords = explode(",", $meta['summary'][0]);
                                 foreach((array)$keywords as $keyword) { ?>
-                                    <span property="odapps:keyword">
+                                    <span property="dct:subject">
                                         <?php echo $keyword; ?>
                                     </span>     
                             <?php } ?>
@@ -54,21 +56,28 @@ get_header();
                             <strong>Themes:</strong>
                             <span property="odapps:thene"><?php echo esc_attr($meta['theme'][0]); ?></span>
                         </p>
-                    </div><!-- .entry-content -->
+                    </div>
                     <br style="clear:both" />
 
                     <div class="entry-content" style="float:left">
                         <p>
-                            <strong>Description: </strong>
-                            <span property="odapps:description"> <?php the_content(); ?> </span>
+                            <strong>Language:</strong>
+                            <span property="dct:language"><?php echo esc_attr($meta['language'][0]); ?></span>
                         </p>
+                    </div>
+                    <br style="clear:both" />
+
+                    <div class="entry-content" style="float:left">
+                        <strong>Description: </strong>
+                        <span property="dct:description"> <?php the_content(); ?> </span>
                     </div><!-- .entry-content -->
+                    <br style="clear:both" />
 
                     <div class="entry-content" style="clear:both" >
                         <p>
                         <div style="float:left"><strong>Conceivers:</strong>&nbsp;</div>
                         <br style="clear:both" />
-                        <div style="float:left"  rel="apps4eu:conceived">
+                        <div style="float:left"  rel="apps4eu:instigator">
                             <?php foreach((array)$meta['conceivers'] as $conceiver) {
                                 $conceiver = unserialize($conceiver);
                                 list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($conceiver['conceiver-name']), esc_attr($conceiver['conceiver-surname']), esc_attr($conceiver['conceiver-affiliation']), esc_attr($conceiver['conceiver-email']), esc_attr($conceiver['contact-point']));
@@ -95,6 +104,26 @@ get_header();
                         </p>
                     </div>
                     <hr />
+
+                    <div style="float:left"><strong>Datasets:</strong>&nbsp;</div>
+                        <br style="clear:both" />
+                        <div class="entry-content" style="float:left"  rel="dvia:consumes">
+                            <?php foreach((array)$meta['datasets'] as $dataset) {
+                                $dataset = unserialize($dataset);
+                                list($dataset_url, $dataset_description) = array(esc_attr($dataset['dataset-url']), esc_attr($dataset['dataset-description']));
+                            ?>
+                                <div  class="entry-content" content = "<?php echo $dataset_url; ?>" typeof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
+                                    <strong>Dataset URL: </strong> 
+                                    <span> <?php echo $dataset_url . ' ' ; ?> </span>
+                                    <br/>
+                                    <strong>Dataset description: </strong> 
+                                    <span property="dvia:description"> <?php echo $dataset_description . "\t" ; ?> </span>
+                                </div> 
+                                <br style="clear:both" />  
+                            <?php } ?>
+                        </div>
+                        <br style="clear:both" /> 
+
                     <?php if ( $connected->have_posts() ) : ?>
                         <div class="entry-content" style="clear:both" rel="oadapps:implemented">
                             <h3>Applications</h3>

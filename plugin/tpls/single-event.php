@@ -24,19 +24,20 @@ get_header();
 							apps4eu: http://apps4eu.eu/voc#
 							odapps: http://apps4eu.eu/odapps/voc#
 							foaf: http://xmlns.com/foaf/0.1/
-							dc: http://purl.org/dc/terms/
+							dct: http://purl.org/dc/terms/
 							schema: http://schema.org/
+							dvia: http://data.eurecom.fr/ontology/dvia#
 							typeof="apps4eu:CocreationEvent" 
 						about = "<?php echo the_permalink(); ?>" >
 						<header class="entry-header">
-							<h1 class="entry-title" property="dc:title" content = <?php echo the_title(); ?> >
+							<h1 class="entry-title" property="dct:title" content = <?php echo the_title(); ?> >
 								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wpapps' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
 									<?php echo the_title() . " " .esc_attr($meta['edition'][0]); ?>
 								</a>
 							</h1>
 						</header><!-- .entry-header -->
 
-						<div style="float:left; margin: 0 25px 25px 0" rel="foaf:logo">
+						<div style="float:left; margin: 0 25px 25px 0" rel="schema:logo">
 							<?php echo wp_get_attachment_image($meta['logo'][0]); ?>  
 						</div>
 						<div class="entry-content" style="float:left" >
@@ -46,7 +47,7 @@ get_header();
 							</p>
 							<p>
 								<strong>Location:</strong>
-								<span property="dc:spatial" typeof="dc:Location"><?php echo esc_attr($meta['location'][0]); ?></span>
+								<span property="dct:spatial" typeof="dct:Location"><?php echo esc_attr($meta['location'][0]); ?></span>
 							</p>
 							<p>
 								<strong>Starts:</strong>
@@ -65,6 +66,24 @@ get_header();
 								<strong>Registration:</strong>
 								<a property="apps4eu:registration" href="<?php echo esc_attr($meta['register_url'][0]); ?>">Register for this event</a>
 							</p>
+						</div>
+                        <br style="clear:both" />
+
+                        <div class="entry-content" style="float:left">
+	                        <p>
+	                            <strong>Themes:</strong>
+	                            <span property="odapps:thene"><?php echo esc_attr($meta['theme'][0]); ?></span>
+	                        </p>
+	                    </div>
+	                    <br style="clear:both" />
+
+                        <div class="entry-content" style="float:left">
+		                    <strong>Description: </strong>
+		                    <span property="dct:description"> <?php the_content(); ?> </span>
+		                </div>
+                        <br style="clear:both" />
+
+                        <div class="entry-content" style="float:left">
 
 								<div style="float:left"><strong>Organizer:</strong></div>
 								<div class="entry-content" style="clear:both" rel = "apps4eu:organizer">
@@ -114,7 +133,7 @@ get_header();
 								<br style="clear:both" />
 							</div>
 								<div style="float:left"><strong>Awards:</strong>&nbsp;</div>
-								<div style="float:left" rel = "apps4eu:awards">
+								<div style="float:left" rel = "apps4eu:awardOffered">
 									<?php foreach((array)$meta['award'] as $award) {
 										$award = unserialize($award);
 										list($prize, $award_sponsor_name, $award_sponsor_website) = array(esc_attr($award['award-prize']), esc_attr($award['award-sponsor-name']), esc_attr($award['award-sponsor-website']));
