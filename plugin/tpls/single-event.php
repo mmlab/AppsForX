@@ -46,15 +46,15 @@ get_header();
 							</p>
 							<p>
 								<strong>Location:</strong>
-								<span property="dc:spatial" instanceof="dc:Location"><?php echo esc_attr($meta['location'][0]); ?></span>
+								<span property="dc:spatial" typeof="dc:Location"><?php echo esc_attr($meta['location'][0]); ?></span>
 							</p>
 							<p>
 								<strong>Starts:</strong>
-								<meta property="schema:startDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_start'][0]); ?>" />
+								<meta property="schema:startDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_start'][0]); ?>" typeof="schema:Date" />
 								<?php echo date("F j, Y - H:i", $meta['when_start'][0]) ?>
 								<br />
 								<strong>Ends:</strong>
-								<meta property="schema:endDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_end'][0]); ?>" />
+								<meta property="schema:endDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_end'][0]); ?>" typceof="schema:Date"/>
 								<?php echo date("F j, Y - H:i", $meta['when_end'][0]) ?>
 							</p>
 	<!--                        <p>-->
@@ -73,7 +73,7 @@ get_header();
 										list($organizer_name, $organizer_website) = array(esc_attr($organizer['organizer-name']), esc_attr($organizer['organizer-website']));
 									?>
 									<div about = "<?php echo "http://apps4eu.eu/cocreation_events/" . urlencode($organizer_name); ?>">
-										<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="foaf:url" instanceof="foaf:Agent">
+										<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="foaf:url" typeof="foaf:Agent">
 											<span property = "foaf:name"><?php echo $organizer_name; ?> </span>
 										</a><br style="clear:both" />
 									</div>
@@ -87,7 +87,7 @@ get_header();
 										list($sponsor_name, $sponsor_website) = array(esc_attr($sponsor['sponsor-name']), esc_attr($sponsor['sponsor-website']));
 									?>
 									<div about = "<?php echo the_permalink() . urlencode($sponsor_name); ?>">
-										<a href="<?php echo $sponsor_website; ?>" title="<?php echo $sponsor_name; ?>" rel="bookmark" property="foaf:url" instanceof="foaf:Agent">
+										<a href="<?php echo $sponsor_website; ?>" title="<?php echo $sponsor_name; ?>" rel="bookmark" property="foaf:url" typeof="foaf:Agent">
 											<span property="foaf:name"><?php echo $sponsor_name; ?></span>
 										</a>
 									</div>
@@ -121,7 +121,7 @@ get_header();
 										?>
 										<div about = "<?php echo the_permalink() . urlencode($prize) ; ?>">
 											<span property="apps4eu:prize" ><?php echo $prize; ?></span> offered by
-											<span rel="apps4eu:sponsor" instanceof="foaf:Agent" >
+											<span rel="apps4eu:sponsor" typeof="foaf:Agent" >
 												<a href="<?php echo $award_sponsor_website; ?>" title="<?php echo $award_sponsor_name; ?>" rel="bookmark" property="foaf:url" about = "<?php echo "http://apps4eu.eu/cocreation_event/" . $award_sponsor_name ?> ">
 													<span property="foaf:name"><?php echo $award_sponsor_name; ?></span>
 												</a>

@@ -26,7 +26,7 @@ get_header();
                             foaf: http://xmlns.com/foaf/0.1/
                         typeof="odapps:AppConcept"
                         about = "<?php echo the_permalink(); ?>">
-                    <meta property="dc:language" instanceof="dc:LinguisticSystem" content="<?php echo esc_attr($meta['language'][0]); ?>" />
+                    <meta property="dc:language" typeof="dc:LinguisticSystem" content="<?php echo esc_attr($meta['language'][0]); ?>" />
                     <header class="entry-header">
                         <h1 class="entry-title" property="dc:title">
                             <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wpapps' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
@@ -73,7 +73,7 @@ get_header();
                                 $conceiver = unserialize($conceiver);
                                 list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($conceiver['conceiver-name']), esc_attr($conceiver['conceiver-surname']), esc_attr($conceiver['conceiver-affiliation']), esc_attr($conceiver['conceiver-email']), esc_attr($conceiver['contact-point']));
                             ?>
-                            <div  content = "<?php echo the_permalink() . $lastname . $name; ?>" instanceof="foaf:Agent" about = "<?php echo the_permalink() . $lastname . $name; ?>">
+                            <div  content = "<?php echo the_permalink() . $lastname . $name; ?>" typeof="foaf:Agent" about = "<?php echo the_permalink() . $lastname . $name; ?>">
                                 <span property="contact point"> <?php if ($contact) echo "<strong>Contact Point</strong>" ?> </span>
                                 <br />
                                 <strong>Name: </strong> <span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
@@ -91,7 +91,7 @@ get_header();
                         </p>
                         <p>
                             <strong>Homepage:</strong>
-                            <a property="foaf:homepage" instanceof="schema:WebPage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Visit homepage</a>
+                            <a property="foaf:homepage" typeof="schema:WebPage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Visit homepage</a>
                         </p>
                     </div>
                     <hr />

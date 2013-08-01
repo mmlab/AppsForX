@@ -39,58 +39,58 @@ get_header();
                         <div class="entry-content" style="float:left">
                             <p>
                                 <strong>Homepage:</strong>
-                                <a property="foaf:homepage" instanceof="schema:WebPage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Homepage</a>
+                                <a property="foaf:homepage" typeof="schema:WebPage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Homepage</a>
                             </p>
                             <p>
                                 <strong>Download URL:</strong>
-                                <a property="foaf:url" instanceof="schema:WebPage" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
+                                <a property="foaf:url" typeof="schema:WebPage" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
                             </p>
                             <p>
                                 <strong>License:</strong>
-                                <span property="dvia:hasLicense" instanceof=""> 
+                                <span property="dvia:hasLicense" typeof=""> 
                                     <?php 
                                         switch ($meta['license'][0]) {
                                             case "Apache v2 License":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href= \"http://www.apache.org/licenses/LICENSE-2.0.html\" >" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href= \"http://www.apache.org/licenses/LICENSE-2.0.html\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "GPL v2":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "MIT License":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Mozilla Public License Version 2.0":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "LGPL v2.1":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "BSD (3-Clause) License":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=\"http://opensource.org/licenses/BSD-3-Clause\" >" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=\"http://opensource.org/licenses/BSD-3-Clause\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Artistic License 2.0e":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=\"http://opensource.org/licenses/Artistic-2.0\" >" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=\"http://opensource.org/licenses/Artistic-2.0\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "GPL v3":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "LGPL v3":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Affero GPL":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=\"http://www.gnu.org/licenses/agpl-3.0.txt\" >" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=\"http://www.gnu.org/licenses/agpl-3.0.txt\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Public Domain (Unlicense)":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "No License":
                                                 echo esc_attr($meta['license'][0]) ;
                                                 break;
                                             case "Eclipse Public License v1.0":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=\"http://www.eclipse.org/legal/epl-v10.html\">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=\"http://www.eclipse.org/legal/epl-v10.html\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "BSD 2-Clause license":
-                                                echo "<a property=\"odapps:hasLicense\" instanceof=\"kati:kati\" href=\"http://opensource.org/licenses/BSD-2-Clause\">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"kati:kati\" href=\"http://opensource.org/licenses/BSD-2-Clause\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                         }
                                     ?> 
@@ -111,7 +111,7 @@ get_header();
                                     $creator = unserialize($creator);
                                     list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($creator['creator-name']), esc_attr($creator['creator-surname']), esc_attr($creator['creator-affiliation']), esc_attr($creator['creator-email']), esc_attr($creator['contact-point']));
                                 ?>
-                                <div  content = "<?php echo the_permalink() . urlencode($lastname) . urlencode($name); ?>" instanceof="foaf:Agent" about = "<?php echo the_permalink() . urlencode($lastname) . urlencode($name); ?>">
+                                <div  content = "<?php echo the_permalink() . urlencode($lastname) . urlencode($name); ?>" typeof="foaf:Agent" about = "<?php echo the_permalink() . urlencode($lastname) . urlencode($name); ?>">
                                     <span property="contact point"> <?php if ($contact) echo "<strong>Contact Point</strong>" ?> </span>
                                     <br />
                                     <strong>Name: </strong> <span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
@@ -135,7 +135,7 @@ get_header();
                                 $dataset = unserialize($dataset);
                                 list($dataset_url, $dataset_description) = array(esc_attr($dataset['dataset-url']), esc_attr($dataset['dataset-description']));
                             ?>
-                                <div  class="entry-content" content = "<?php echo $dataset_url; ?>" instanceof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
+                                <div  class="entry-content" content = "<?php echo $dataset_url; ?>" typeof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
                                     <strong>Dataset URL: </strong> 
                                     <span property="dvia:kati"> <?php echo $dataset_url . ' ' ; ?> </span>
                                     <br/>
