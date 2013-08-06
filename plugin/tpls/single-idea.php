@@ -21,14 +21,14 @@ get_header();
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>
                         prefix="
-                            apps4eu: http://apps4eu.eu/voc#
-                            odapps: http://apps4eu.eu/odapps/voc#
+                            apps4X: http://apps4europe.eu/vocab/apps4X#
+                            odapps: http://apps4europe.eu/vocab/odapps#
                             foaf: http://xmlns.com/foaf/0.1/
                             dct: http://purl.org/dc/terms/
                             dvia: http://data.eurecom.fr/ontology/dvia#
                         typeof="odapps:AppConcept"
                         about = "<?php echo the_permalink(); ?>">
-                    <meta property="dct:language" typeof="dct:LinguisticSystem" content="<?php echo esc_attr($meta['language'][0]); ?>" />
+                    <meta property="dct:language" content="<?php echo esc_attr($meta['language'][0]); ?>" />
                     <header class="entry-header">
                         <h1 class="entry-title" property="dct:title">
                             <a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wpapps' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
@@ -77,7 +77,7 @@ get_header();
                         <p>
                         <div style="float:left"><strong>Conceivers:</strong>&nbsp;</div>
                         <br style="clear:both" />
-                        <div style="float:left"  rel="apps4eu:instigator">
+                        <div style="float:left"  rel="apps4X:instigator">
                             <?php foreach((array)$meta['conceivers'] as $conceiver) {
                                 $conceiver = unserialize($conceiver);
                                 list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($conceiver['conceiver-name']), esc_attr($conceiver['conceiver-surname']), esc_attr($conceiver['conceiver-affiliation']), esc_attr($conceiver['conceiver-email']), esc_attr($conceiver['contact-point']));
@@ -100,7 +100,7 @@ get_header();
                         </p>
                         <p>
                             <strong>Homepage:</strong>
-                            <a property="foaf:homepage" typeof="schema:WebPage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Visit homepage</a>
+                            <a rel="foaf:homepage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Visit homepage</a>
                         </p>
                     </div>
                     <hr />
@@ -125,7 +125,7 @@ get_header();
                         <br style="clear:both" /> 
 
                     <?php if ( $connected->have_posts() ) : ?>
-                        <div class="entry-content" style="clear:both" rel="oadapps:implemented">
+                        <div class="entry-content" style="clear:both" rel="odapps:implemented">
                             <h3>Applications</h3>
                             <ul>
                                 <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>

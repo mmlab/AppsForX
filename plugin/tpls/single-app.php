@@ -22,8 +22,8 @@ get_header();
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>
                         prefix="
-                            apps4eu: http://apps4eu.eu/voc#
-                            odapps: http://apps4eu.eu/odapps/voc#
+                            apps4X: http://apps4europe.eu/vocab/apps4X#
+                            odapps: http://apps4europe.eu/vocab/odapps#
                             foaf: http://xmlns.com/foaf/0.1/
                             dct: http://purl.org/dc/terms/
                             dvia: http://data.eurecom.fr/ontology/dvia#
@@ -42,11 +42,11 @@ get_header();
                         <div class="entry-content" style="float:left">
                             <p>
                                 <strong>Homepage:</strong>
-                                <a property="foaf:homepage" typeof="schema:WebPage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Homepage</a>
+                                <a property="foaf:homepage" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['homepage'][0]); ?>" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Homepage</a>
                             </p>
                             <p>
                                 <strong>Download URL:</strong>
-                                <a property="dvia:downloadURL" typeof="schema:WebPage" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
+                                <a property="dvia:downloadURL" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['download_url'][0]); ?>" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
                             </p>
                             <p>
                                 <strong>License:</strong>
@@ -120,7 +120,7 @@ get_header();
                                     $creator = unserialize($creator);
                                     list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($creator['creator-name']), esc_attr($creator['creator-surname']), esc_attr($creator['creator-affiliation']), esc_attr($creator['creator-email']), esc_attr($creator['contact-point']));
                                 ?>
-                                <div  content = "<?php echo "http://apps4eu.eu/cocreation_events/" . urlencode($lastname) . urlencode($name); ?>" typeof="foaf:Agent" about = "<?php echo "http://apps4eu.eu/cocreation_events/" . urlencode($lastname) . urlencode($name); ?>">
+                                <div  content = "<?php echo "http://apps4europe.eu/cocreation_events/" . urlencode($lastname) . urlencode($name); ?>" typeof="foaf:Agent" about = "<?php echo "http://apps4eu.eu/cocreation_events/" . urlencode($lastname) . urlencode($name); ?>">
                                     <span property="contact point"> <?php if ($contact) echo "<strong>Contact Point</strong>" ?> </span>
                                     <br />
                                     <strong>Name: </strong> <span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>

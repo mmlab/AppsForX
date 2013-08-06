@@ -28,6 +28,7 @@ class WPApps_Posttypes {
         add_action('init', [$this, "register_event"]);
         add_action('init', [$this, "register_idea"]);
         add_action('init', [$this, "register_app"]);
+        add_action('init', [$this, "register_submission"]);
 
         add_action("manage_event_posts_custom_column", [$this, 'custom_event_column'], 10, 2);
         add_filter('manage_event_posts_columns' , [$this, 'custom_event_columns']);
@@ -140,6 +141,38 @@ class WPApps_Posttypes {
             'query_var' => true,
             'rewrite' => array( 'slug' => 'app' ),
             'capability_type' => 'app',
+            'has_archive' => true,
+            'hierarchical' => false,
+            'supports' => array( 'title', 'editor', 'comments' ),
+            'map_meta_cap' => true,
+            'capabilities' => ['read' => 'read_events' /*NOT read_event*/]
+        ));
+    }
+
+    function register_submission() {
+        register_post_type("submission", array(
+            'labels' => array(
+                'name' => __('Submissions', WPAPPS_TRANS),
+                'singular_name' => __('Submission', WPAPPS_TRANS),
+                'add_new' => __('Add New', WPAPPS_TRANS),
+                'add_new_item' => __('Add New submission', WPAPPS_TRANS),
+                'edit_item' => __('Edit submission', WPAPPS_TRANS),
+                'new_item' => __('New submission', WPAPPS_TRANS),
+                'all_items' => __('Submissions', WPAPPS_TRANS),
+                'view_item' => __('View submission', WPAPPS_TRANS),
+                'search_items' => __('Search Submissions', WPAPPS_TRANS),
+                'not_found' =>  __('No submissions found', WPAPPS_TRANS),
+                'not_found_in_trash' => __('No submissions found in Trash', WPAPPS_TRANS),
+                'parent_item_colon' => '',
+                'menu_name' => __('Submissions', WPAPPS_TRANS)
+            ),
+            'public' => true,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'show_in_menu' => false,
+            'query_var' => true,
+            'rewrite' => array( 'slug' => 'submission' ),
+            'capability_type' => 'submission',
             'has_archive' => true,
             'hierarchical' => false,
             'supports' => array( 'title', 'editor', 'comments' ),

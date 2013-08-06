@@ -35,6 +35,7 @@ class WPApps_Metaboxes {
         add_filter('cmb_meta_boxes', [$this, 'add_event_metaboxes']);
         add_filter('cmb_meta_boxes', [$this, 'add_idea_metaboxes']);
         add_filter('cmb_meta_boxes', [$this, 'add_app_metaboxes']);
+        add_filter('cmb_meta_boxes', [$this, 'add_submission_metaboxes']);
     }
 
     function add_event_metaboxes($meta_boxes) {
@@ -290,4 +291,43 @@ class WPApps_Metaboxes {
         ];
         return $meta_boxes;
     }  
+
+    function add_submission_metaboxes($meta_boxes) {
+        $meta_boxes[] = [
+            'title' => _x("Information", 'app-edit', WPAPPS_TRANS),
+            'pages' => 'app',
+            'fields' => [
+                ['id' => 'keyword', 'name' => __("Keywords", WPAPPS_TRANS), 'type' => 'textarea'],
+                ['id' => 'homepage', 'name' => __("Homepage", WPAPPS_TRANS), 'type' => 'text_url'],
+                ['id' => 'download_url', 'name' => __("Download URL", WPAPPS_TRANS), 'type' => 'text_url'],
+                ['id' => 'license', 'name' => __("Theme", WPAPPS_TRANS), 'type' => 'select', 'options' => [
+                    '' => _x('Select license', 'theme', WPAPPS_TRANS),
+                    'Apache v2 License' => _x('Apache v2 License', 'theme', WPAPPS_TRANS),
+                    'GPL v2' => _x('GPL v2', WPAPPS_TRANS),
+                    'MIT License' => _x('MIT License', 'theme', WPAPPS_TRANS),
+                    'Mozilla Public License Version 2.0' => _x('Mozilla Public License Version 2.0', 'theme', WPAPPS_TRANS),
+                    'LGPL v2.1' => _x('LGPL v2.1', 'theme', WPAPPS_TRANS),
+                    'BSD (3-Clause) License' => _x('BSD (3-Clause) License', 'theme', WPAPPS_TRANS),
+                    'Artistic License 2.0e' => _x('Artistic License 2.0', 'theme', WPAPPS_TRANS),
+                    'GPL v3' => _x('GPL v3', 'theme', WPAPPS_TRANS),
+                    'LGPL v3' => _x('LGPL v3', 'theme', WPAPPS_TRANS),
+                    'Affero GPL' => _x('Affero GPL', 'theme', WPAPPS_TRANS),
+                    'Public Domain (Unlicense)' => _x('Public Domain (Unlicense)', WPAPPS_TRANS),
+                    'No License' => _x('No License', 'theme', WPAPPS_TRANS),
+                    'Eclipse Public License v1.0' => _x('Eclipse Public License v1.0', 'theme', WPAPPS_TRANS),
+                    'BSD 2-Clause license' => _x('BSD 2-Clause license', 'theme', WPAPPS_TRANS)
+                ]],
+                ['id' => 'language', 'name' => __("Language", WPAPPS_TRANS), 'type' => 'text', 'desc' => __("The application's language.<br />Eg. 'English', 'Dutch'", WPAPPS_TRANS)],
+                ['id' => 'ori-deri', 'name' => _x("Original Vs Derivative Work", 'original-derivative', WPAPPS_TRANS), 'type' => 'select', 'options' => [
+                    '' => _x('Other', 'original-derivative', WPAPPS_TRANS),
+                    'Original Work' => _x('Original Work', 'original-derivative', WPAPPS_TRANS),
+                    'Derivative Work' => _x('Derivative Work', 'original-derivative', WPAPPS_TRANS)
+                ]],
+            ],
+            'context' => 'side',
+            'priority' => 'high'
+        ];
+        
+        return $meta_boxes;
+    }
 }

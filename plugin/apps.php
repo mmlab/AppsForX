@@ -78,7 +78,7 @@ class WPApps {
             // By resetting the $parent_file and $submenu_file variable, we can maintain the menu highlight
             add_action('admin_head', function() {
                 global $submenu_file, $parent_file;
-                $types = ["event", "idea", "app"];
+                $types = ["event", "idea", "app", "submission"];
                 $ptype = @($_REQUEST["post_type"] ?: get_post_type(get_the_ID()));
 
                 if (in_array($ptype, $types)) {
@@ -95,6 +95,7 @@ class WPApps {
                 add_submenu_page("wpapps", __("Events", WPAPPS_TRANS), __("Events", WPAPPS_TRANS), "edit_events", "edit.php?post_type=event");
                 add_submenu_page("wpapps", __("Ideas", WPAPPS_TRANS), __("Ideas", WPAPPS_TRANS), "edit_ideas", "edit.php?post_type=idea");
                 add_submenu_page("wpapps", __("Apps", WPAPPS_TRANS), __("Apps", WPAPPS_TRANS), "edit_apps", "edit.php?post_type=app");
+                add_submenu_page("wpapps", __("Submissions", WPAPPS_TRANS), __("Submissions", WPAPPS_TRANS), "edit_submissions", "edit.php?post_type=submission");
             });
 
             // Add admin css
@@ -117,8 +118,25 @@ class WPApps {
      */
     public function page_overview() { // ToDo
         echo "<h2>WiP</h2><p>This could/should show a nice overview of pending submissions.</p>";
-    }
 
+            // Find connected pages (for all posts)
+       $posts = get_posts(
+         array(
+          'numberposts' => -1,
+          'post_status' => 'pending',
+          'post_type' => get_post_types('', 'names'),
+         )
+        );
+
+       echo "<ul>" ;
+       foreach ($posts as $post) { 
+         // echo $post->post_title . PHP_EOL; //...
+
+         echo "<li><a href=" . get_permalink( $post->ID ) . "> " . $post->post_title . "</a></li>" ;
+        }
+        echo "</ul>" ;
+
+    }
     /**
      * We can save user options to the database, but it isn't used at the moment
      */
@@ -149,7 +167,7 @@ class WPApps {
 
         add_filter('template_include', function($template_path) {
             $post_type = get_post_type();
-            if (in_array($post_type, ['event', 'idea', 'app'])) {
+            if (in_array($post_type, ['event', 'idea', 'app', 'submission'])) {
                 $type = is_single() ? "single" : (is_archive() ? "archive" : false);
                 if ($type) {
                     $tplfile = "$type-$post_type.php";
@@ -171,7 +189,7 @@ class WPApps {
     {
         // Only include P2P if it isn't being used by the site owner yet
         // Also check if git was properly cloned
-        $p2p = WPAPPS_PATH . '/lib/posts-to-posts/posts-to-posts.php';
+		$p2p = WPAPPS_PATH . '/lib/posts-to-posts/posts-to-posts.php';
 
         register_activation_hook(__FILE__, function() use ($p2p) {
             if (!file_exists($p2p))
