@@ -27,9 +27,10 @@ get_header();
                             foaf: http://xmlns.com/foaf/0.1/
                             dct: http://purl.org/dc/terms/
                             dvia: http://data.eurecom.fr/ontology/dvia#
-                            dcat: http://www.w3.org/ns/dcat#
-                    typeof="odapps:Application"
-                    about = "<?php echo the_permalink(); ?>">
+                            dcat: http://www.w3.org/ns/dcat#"
+                        about = "<?php echo the_permalink(); ?>" 
+                        typeof="odapps:Application">
+
                         <header class="entry-header">
                             
                             <h1 class="entry-title" property="dct:title">
@@ -38,18 +39,32 @@ get_header();
                                 </a>
                             </h1>
                         </header><!-- .entry-header -->
-                    <div class="entry-content" style="float:left" >
-                        <div class="entry-content" style="float:left">
-                            <p>
-                                <strong>Homepage:</strong>
-                                <a property="foaf:homepage" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['homepage'][0]); ?>" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Homepage</a>
-                            </p>
-                            <p>
-                                <strong>Download URL:</strong>
-                                <a property="dvia:downloadURL" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['download_url'][0]); ?>" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
-                            </p>
-                            <p>
-                                <strong>License:</strong>
+                        
+                        <div class="entry-content" >
+
+                            <?php if ($meta['homepage'][0]): ?>
+                                <div style="float:left">Homepage:</div>
+                                <div>
+                                    <a property="foaf:homepage" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['homepage'][0]); ?>" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Homepage</a>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if ($meta['download_url'][0]): ?>
+                                <div style="float:left">Download URL:</div>
+                                <div>
+                                    <a property="dvia:downloadURL" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['download_url'][0]); ?>" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if ($meta['download_url'][0]): ?>
+                                <div style="float:left">Demo:</div>
+                                <div>
+                                    <a property="apps4X:demo" typeof="schema:WebPage" content = "<?php echo esc_attr($meta['download_url'][0]); ?>" href="<?php echo esc_attr($meta['download_url'][0]); ?>">Download URL</a>
+                                </div>
+                            <?php endif ?>
+
+                            <?php if ($meta['license'][0]): ?>
+                                <div style="float:left">License:</div>
                                     <?php 
                                         switch ($meta['license'][0]) {
                                             case "Apache v2 License":
@@ -94,123 +109,124 @@ get_header();
                                             case "BSD 2-Clause license":
                                                 echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"http://opensource.org/licenses/BSD-2-Clause\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
-                                        }
-                                    ?> 
-                            </p>
-                        </div>
+                                        } ?>
+                                    </p>
+                                <?php endif ?> 
                         <br style="clear:both" />
 
-                        <div class="entry-content" style="float:left">
-                            <p>
-                                <strong>Language:</strong>
-                                <span property="dct:language"><?php echo esc_attr($meta['language'][0]); ?></span>
+                        <?php if ($meta['language'][0]): ?>
+                            <div>
+                                <div style="float:left">Language:</div>
+                                <div property="dct:language"><?php echo esc_attr($meta['language'][0]); ?></div>
                             </p>
-                        </div>
-                        <br style="clear:both" />
-
-                        <div class="entry-content">
-                            <strong>Description:</strong>
-                            <span property="dct:description"><?php the_content(); ?></span>
-                        </div>
-
-                        <div style="float:left"><strong>Creators:</strong>&nbsp;</div>
                             <br style="clear:both" />
-                            <div class="entry-content" style="float:left"  rel="dvia:author">
+                        <?php endif ?>
+
+                        <div about = "<?php echo the_permalink(); ?>" >
+                            <div style="float:left">Keywords:</div>
+                            <?php 
+                                $keywords = explode(",", $meta['keyword'][0]);
+                                foreach((array)$keywords as $keyword) { ?>
+                                    <span property="dct:subject">
+                                        <?php echo $keyword . ", "; ?>
+                                    </span>     
+                            <?php } ?>
+                        </div><!-- .entry-content -->
+                        <br style="clear:both" />
+                        
+                        <h2>Description:</h2>
+                        <span property="dct:description"><?php the_content(); ?></span>
+                        <br style="clear:both" />
+
+                        <h2>Creators:</h2>
+                            <div rel="dvia:author">
                                 <?php foreach((array)$meta['creators'] as $creator) {
                                     $creator = unserialize($creator);
                                     list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($creator['creator-name']), esc_attr($creator['creator-surname']), esc_attr($creator['creator-affiliation']), esc_attr($creator['creator-email']), esc_attr($creator['contact-point']));
                                 ?>
                                 <div  content = "<?php echo "http://apps4europe.eu/cocreation_events/" . urlencode($lastname) . urlencode($name); ?>" typeof="foaf:Agent" about = "<?php echo "http://apps4eu.eu/cocreation_events/" . urlencode($lastname) . urlencode($name); ?>">
-                                    <span property="contact point"> <?php if ($contact) echo "<strong>Contact Point</strong>" ?> </span>
-                                    <br />
-                                    <strong>Name: </strong> <span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
-                                    <span property="foaf:name"> <?php echo $name . "\t" ; ?> </span>
-                                    <br />    
-                                    <strong>Affiliation: </strong> <span property="foaf:affiliation"> <?php echo $affiliation . ' ' ; ?> </span>
-                                    <br />
-                                    <strong>E-mail: </strong> <span property="foaf:mbox" content="<?php echo $email; ?>"> <?php echo $email; ?></span>
-                                    <br />
-                                    </div> 
-                                     <br style="clear:both" />  
+                                    <div style="float:left" property="contact point"></div> <div><?php if ($contact) echo "<strong>Contact Point</strong>" ?> </div>
+                                    <div style="float:left">Name: </div> <div property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </div>
+                                    <div property="foaf:name"> <?php echo $name . "\t" ; ?> </div>   
+                                    <div style="float:left">Affiliation: </div> <div property="foaf:affiliation"> <?php echo $affiliation . ' ' ; ?> </div>
+                                    <div style="float:left">E-mail: </div> <div property="foaf:mbox" content="<?php echo $email; ?>"> <?php echo $email; ?></div>
+                                    <br style="clear:both" />
+                                </div>  
                                 <?php } ?>
                             </div>
-                        </div>  
                         <br style="clear:both" />
 
-                        <div style="float:left"><strong>Datasets:</strong>&nbsp;</div>
-                        <br style="clear:both" />
-                        <div class="entry-content" style="float:left"  rel="dvia:consumes">
+                        <h2>Datasets:</h2>
+                        <div style="float:left" rel="dvia:consumes">
                             <?php foreach((array)$meta['datasets'] as $dataset) {
                                 $dataset = unserialize($dataset);
                                 list($dataset_url, $dataset_description) = array(esc_attr($dataset['dataset-url']), esc_attr($dataset['dataset-description']));
                             ?>
-                                <div  class="entry-content" content = "<?php echo $dataset_url; ?>" typeof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
-                                    <strong>Dataset URL: </strong> 
-                                    <span> <?php echo $dataset_url . ' ' ; ?> </span>
+                                <div  content = "<?php echo $dataset_url; ?>" typeof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
+                                    <div style="float:left">Dataset URL: </div> 
+                                    <div> <?php echo $dataset_url . ' ' ; ?> </div>
                                     <br/>
-                                    <strong>Dataset description: </strong> 
-                                    <span property="dvia:description"> <?php echo $dataset_description . "\t" ; ?> </span>
+                                    <div style="float:left">Dataset description: </div> 
+                                    <div property="dvia:description"> <?php echo $dataset_description . "\t" ; ?> </div>
                                 </div> 
                                 <br style="clear:both" />  
                             <?php } ?>
                         </div>
                         <br style="clear:both" /> 
 
-                        <div class="entry-content" style="float:left"><strong>Platform Details:</strong>&nbsp;</div>
-                        <br style="clear:both" />
-                        <div  class="entry-content" style="float:left" >
-                                <strong>Platform: </strong>
-                                <span property="dvia:platform">
+                        <h2>Platform Details:</h2>
+                        
+                            <div>
+                                <div style="float:left">Platform: </div>
+                                <div property="dvia:platform">
                                     <?php echo esc_attr($meta['platform-title'][0]); ?>
-                                </span> 
-                                <br style="clear:both" />   
-                                <strong>System: </strong>
-                                <span property="dvia:system"> <?php echo esc_attr($meta['platform-system'][0]); ?> </span>
-                                <br style="clear:both" />  
-                                <strong>Tools: </strong>
-                                <span property="dvia:usesTool"> <?php echo esc_attr($meta['tools'][0]); ?> </span>
-                                <br style="clear:both" />  
-                                <strong>Requirements: </strong>
-                                <span property="schema:requirements"> <?php echo esc_attr($meta['requirements'][0]); ?> </span>
-                                <br style="clear:both" />
-                                <strong>Software version: </strong>
-                                <span property="schema:softwareVersion"> <?php echo esc_attr($meta['softwareVersion'][0]); ?> </span>
-                                <br style="clear:both" />
-                                <strong>Programming Language: </strong>
-                                <span property="schema:programmingLanguage"> <?php echo esc_attr($meta['programmingLanguage'][0]); ?> </span>
-                                <br style="clear:both" />
-                                <strong>Work: </strong>
-                                <span property=""> <?php echo esc_attr($meta['ori-deri'][0]); ?> </span>
-                                <br style="clear:both" />
-                        </div> 
+                                </div> 
+                                   
+                                <div style="float:left">System: </div>
+                                <div property="dvia:system"> 
+                                    <?php echo esc_attr($meta['platform-system'][0]); ?> 
+                                </div>
+                                 
+                                <div style="float:left">Tools: </div>
+                                <div property="dvia:usesTool"> 
+                                    <?php echo esc_attr($meta['tools'][0]); ?> 
+                                </div>
+                                
+                                <div style="float:left">Requirements: </div>
+                                <div property="schema:requirements"> 
+                                    <?php echo esc_attr($meta['requirements'][0]); ?> 
+                                </div>
+                                
+                                <div style="float:left">Software version: </div>
+                                <div property="schema:softwareVersion"> 
+                                    <?php echo esc_attr($meta['softwareVersion'][0]); ?> 
+                                </div>
+                                
+                                <div style="float:left">Programming Language: </div>
+                                <div property="schema:programmingLanguage"> 
+                                    <?php echo esc_attr($meta['programmingLanguage'][0]); ?> 
+                                </div>
+                                
+                                <div style="float:left">Work: </div>
+                                    <div property=""> 
+                                        <?php echo esc_attr($meta['ori-deri'][0]); ?> 
+                                    </div>
+                            </div> 
                         <br style="clear:both" />  
 
-                        <div class="entry-content" style="float:left" about = "<?php echo the_permalink(); ?>" >
-                            <p>
-                                <strong>Keywords:</strong>
-                                <?php 
-                                    $keywords = explode(",", $meta['keyword'][0]);
-                                    foreach((array)$keywords as $keyword) { ?>
-                                        <span property="dct:subject">
-                                            <?php echo $keyword; ?>
-                                        </span>     
-                                <?php } ?>
-                            </p>
-                        </div><!-- .entry-content -->
-                        <br style="clear:both" />
+                                        
+
+                        <?php if ( $connected->have_posts() ) : ?>
+                            <div style="clear:both" rel="oadapps:implements">
+                                <h3>Ideas</h3>
+                                <ul>
+                                    <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
+                                        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                                    <?php endwhile; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
                     </div>
-
-                    <?php if ( $connected->have_posts() ) : ?>
-                        <div class="entry-content" style="clear:both" rel="oadapps:implements">
-                            <h3>Ideas</h3>
-                            <ul>
-                                <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-                                    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-                                <?php endwhile; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
-
                 </article><!-- #post -->
             <?php endwhile; // end of the loop. ?>
             <?php else: ?>

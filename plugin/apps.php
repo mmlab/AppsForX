@@ -128,8 +128,9 @@ class WPApps {
          )
         );
 
-       echo "<ul>" ;
-       foreach ($posts as $post) { 
+        echo "<p>The list of pending submissions.</p>";
+        echo "<ul>" ;
+        foreach ($posts as $post) { 
          // echo $post->post_title . PHP_EOL; //...
 
          echo "<li><a href=" . get_permalink( $post->ID ) . "> " . $post->post_title . "</a></li>" ;
@@ -219,6 +220,13 @@ class WPApps {
                 'to' => 'app',
                 'can_create_post' => current_user_can("edit_apps")
             ]);
+
+            p2p_register_connection_type([
+                'name' => 'apps_to_events',
+                'from' => 'app',
+                'to' => 'event',
+                'can_create_post' => current_user_can("link_apps")
+            ]);
         });
     }
 
@@ -250,6 +258,7 @@ class WPApps {
                     'read_app' => true,
                     'read_apps' => true, // magic
                     'edit_apps' => true,
+                    'link_apps' => true,
                     'delete_apps' => true,
                     'edit_app' => true,
                     'delete_app' => true,

@@ -27,116 +27,125 @@ get_header();
 							dct: http://purl.org/dc/terms/
 							schema: http://schema.org/
 							dvia: http://data.eurecom.fr/ontology/dvia#
-							lode: http://linkedevents.org/ontology/
-							typeof="apps4X:CocreationEvent" 
-						about = "<?php echo the_permalink() . esc_attr($meta['edition'][0]) ; ?>" >
+							lode: http://linkedevents.org/ontology/ "
+							
+						about = "<?php echo the_permalink() . esc_attr($meta['edition'][0]) ; ?>" typeof="apps4X:CocreationEvent" >
+
 						<header class="entry-header">
-							<h1 class="entry-title" property="dct:title" content = <?php echo the_title(); ?> >
+							<h1 class="entry-title" property="dct:title" content = "<?php echo the_title(); ?>" >
 								<a href="<?php the_permalink(); ?>" title="<?php echo esc_attr( sprintf( __( 'Permalink to %s', 'wpapps' ), the_title_attribute( 'echo=0' ) ) ); ?>" rel="bookmark">
 									<?php echo the_title() . " " .esc_attr($meta['edition'][0]); ?>
 								</a>
 							</h1>
-						</header><!-- .entry-header -->
-						<div style="float:left; margin: 0 25px 25px 0" rel="schema:logo">
-							<?php echo wp_get_attachment_image($meta['logo'][0]); ?>  
-						</div>
-						<div class="entry-content" style="float:left" >
-							<p>
-								<strong>Abbreviated Title:</strong>
-								<span property="apps4X:shortTitle" ><?php echo esc_attr($meta['abbreviated_title'][0]); ?></span> 
-							</p>
-							<p>
-								<strong>Location:</strong>
-								<span property="lode:atSpace" ><?php echo esc_attr($meta['location'][0]); ?></span>
-							</p>
-							<p>
-								<strong>Starts:</strong>
-								<span property="schema:startDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_start'][0]); ?>" >
-									<?php echo date("F j, Y - H:i", $meta['when_start'][0]) ?>
-								</span>
-							</p>
-							<p>
-								<strong>Ends:</strong>
-								<span property="schema:endDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_end'][0]); ?>" >
-									<?php echo date("F j, Y - H:i", $meta['when_end'][0]) ?>
-								</span>
-							</p>
-                       		<p>
-	                            <strong>Edition:</strong>
-	                            <span property="apps4X:edition"><?php echo esc_attr($meta['edition'][0]); ?></span>
-	                        </p>
-							<p>
-								<strong>Registration:</strong>
-								<a property="apps4X:registration" href="<?php echo esc_attr($meta['register_url'][0]); ?>">Register for this event</a>
-							</p>
-						</div>
-                        <br style="clear:both" />
+						</header>
+						<!-- .entry-header -->
 
-                        <div class="entry-content" style="float:left">
-	                        <p>
-	                            <strong>Themes:</strong>
-	                            <span property="odapps:theme"><?php echo esc_attr($meta['theme'][0]); ?></span>
-	                        </p>
-	                    </div>
-	                    <br style="clear:both" />
-
-                        <div class="entry-content" style="float:left">
-		                    <strong>Description: </strong>
-		                    <span property="dct:description"> <?php the_content(); ?> </span>
-		                </div>
-                        <br style="clear:both" />
-
-                        <div class="entry-content" style="float:left">
-
-								<div style="float:left"><strong>Organizer:</strong></div>
-								<div class="entry-content" style="clear:both" rel = "apps4X:organizer">
-									<?php foreach((array)$meta['organizer'] as $organizer) {
-										$organizer = unserialize($organizer);
-										list($organizer_name, $organizer_website) = array(esc_attr($organizer['organizer-name']), esc_attr($organizer['organizer-website']));
-									?>
-									<div about = "<?php echo "http://apps4europe.eu/cocreation_events/" . urlencode($organizer_name); ?>"  typeof="foaf:Agent">
-										<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="foaf:url">
-											<span property = "foaf:name"><?php echo $organizer_name; ?> </span>
-										</a><br style="clear:both" />
-									</div>
-									<?php } ?>
+						<div class="entry-content" >
+							<?php if($meta['logo'][0]): ?>	
+								<div style="float:right" margin: 0 25px 25px 0" rel="schema:logo">
+									<?php echo wp_get_attachment_image($meta['logo'][0]); ?>  
 								</div>
+							<?php endif ?>
 
-								<div style="float:left"><strong>Sponsors:</strong>&nbsp;</div>
-								<div style="float:left" style="clear:both" rel="apps4X:sponsor">
+							<?php if($meta['abbreviated_title'][0]): ?>	
+								<div style="float:left">Abbreviated Title: </div> 
+									<div property="apps4X:shortTitle" >
+										<?php echo esc_attr($meta['abbreviated_title'][0]); ?>
+									</div> 
+							<?php endif ?>
+
+							<div style="float:left">Location: </div> 
+							<div property="lode:atSpace" ><?php echo esc_attr($meta['location'][0]); ?></div>
+							
+							<div style="float:left">Starts: </div> 
+							<div property="schema:startDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_start'][0]); ?>" >
+								<?php echo date("F j, Y - H:i", $meta['when_start'][0]) ?>
+							</div>
+
+							<?php if($meta['when_end'][0]): ?>
+								<div style="float:left">Ends: </div>
+								<div property="schema:endDate" content="<?php echo date('Y-m-d\TH:i:s', $meta['when_end'][0]); ?>" >
+									<?php echo date("F j, Y - H:i", $meta['when_end'][0]) ?>
+								</div>
+							<?php endif ?>
+
+							<?php if($meta['edition'][0]): ?>
+	                       		<div style="float:left">Edition: </div> 
+		                        <div property="apps4X:edition"><?php echo esc_attr($meta['edition'][0]); ?></div>
+	                    	<?php endif ?>
+
+							<div style="float:left">Registration: </div>
+							<div><a property="apps4X:registration" href="<?php echo esc_attr($meta['register_url'][0]); ?>">Register for this event</a></div>
+
+							<div style="float:left">Datasets' catalogue: </div>
+							<div><a property="schema:url" href="<?php echo esc_attr($meta['datasets_url'][0]); ?>">Catalogue of datasets</a></div>
+							
+	                        <div style="float:left">Themes: </div> &nbsp;
+	                        <div property="odapps:theme"><?php echo esc_attr($meta['theme'][0]); ?></div>
+	                        <br style="clear:both" />
+
+			                <h2>Description: </h2>
+			                <div style="float:left" property="dct:description"> <?php the_content(); ?> </div>
+	                        <br style="clear:both" />
+
+							<h2>Organizers:</h2>
+							<?php foreach((array)$meta['organizer'] as $organizer) { 
+								$organizer = unserialize($organizer);
+								list($organizer_name, $organizer_website, $coordinator) = array(esc_attr($organizer['organizer-name']), esc_attr($organizer['organizer-website']), esc_attr($organizer['organizer-coordinator']));
+									
+								if ($coordinator) { ?>
+									<div style="clear:both" rel = "apps4X:coordinator"><em>Coordinator:</em>
+								<?php } else {?> 
+									<div style="clear:both" rel = "apps4X:organizer">
+								<?php } ?>
+
+								<span about = "<?php echo "http://apps4europe.eu/cocreation_events/" . urlencode($organizer_name); ?>"  typeof="foaf:Agent">
+									<a href="<?php echo $organizer_website; ?>" title="<?php echo $organizer_name; ?>" rel="bookmark" property="foaf:url">
+										<span property = "foaf:name"><?php echo $organizer_name; ?> </span>
+									</a>
+								</span>
+							</div>
+								<?php } ?>
+							<br style="clear:both" />	
+
+							<?php if ($meta['sponsor']): ?>
+								<h2>Sponsors:</h2>
+								<div rel="apps4X:sponsor">
 									<?php foreach((array)$meta['sponsor'] as $sponsor) {
 										$sponsor = unserialize($sponsor);
 										list($sponsor_name, $sponsor_website) = array(esc_attr($sponsor['sponsor-name']), esc_attr($sponsor['sponsor-website']));
 									?>
-									<div about = "<?php echo "http://apps4europe.eu/cocreation_events/" . urlencode($sponsor_name); ?>"  typeof="foaf:Agent">
+									<p about = "<?php echo "http://apps4europe.eu/cocreation_events/" . urlencode($sponsor_name); ?>"  typeof="foaf:Agent">
 										<a href="<?php echo $sponsor_website; ?>" title="<?php echo $sponsor_name; ?>" rel="bookmark" property="foaf:url">
 											<span property="foaf:name"><?php echo $sponsor_name; ?></span>
 										</a>
-									</div>
+									</p>
 									<?php } ?>
-									<br style="clear:both" />
 								</div>
-							<br style="clear:both" />	
-							<div rel="apps4X:jury" >
-								<div style="float:left" ><strong>Jury:</strong>&nbsp;</div><br/>
-								<div style="float:left"  rel="apps4X:jury" >
-									<?php foreach((array)$meta['jury'] as $jury) {
+							<?php endif ?>
+							<br style="clear:both" />
+
+							<?php if ($meta['jury']): ?>
+								<div rel="apps4X:jury">
+									<h2>Jury:</h2>
+									<?php foreach((array)$meta['jury'] as $jury) 
 										$jury = unserialize($jury);
 										list($lastname, $name) = array(esc_attr($jury['agent-surname']), esc_attr($jury['agent-name']));
 									?>
-										<div about = "<?php echo the_permalink() . urlencode($lastname) ; ?>" rel="apps4X:juryMember" typeof="foaf:Agent">
-											<strong>Jury member: </strong> 
-											<br/>
-											<span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
-                                			<span property="foaf:name"> <?php echo $name . "\t" ; ?> </span>
-                                			<br />    
+										<div about = "<?php echo the_permalink() . urlencode($lastname) ; ?>" rel="apps4X:juryMember">
+											<div style="float:left" typeof="foaf:Agent">Jury member: </div>
+											<div>
+												<span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
+		                                		<span property="foaf:name"> <?php echo $name . "\t" ; ?> </span>
+		                                	</div> 
+		                                	<br style="clear:both" />   
 										</div>	
-									<?php } ?>
 								</div>
 								<br style="clear:both" />
-							</div>
-							<div style="float:left"><strong>Awards:</strong>&nbsp;</div>
-								<div style="float:left" rel = "apps4X:award">
+							<?php endif ?>
+								
+								<div rel = "apps4X:award">
+									<h2>Awards:</h2>
 									<?php foreach((array)$meta['award'] as $award) {
 										$award = unserialize($award);
 										list($prize, $award_sponsor_name, $award_sponsor_website) = array(esc_attr($award['award-prize']), esc_attr($award['award-sponsor-name']), esc_attr($award['award-sponsor-website']));
@@ -154,23 +163,21 @@ get_header();
 									<?php } ?>
 								</div>
 								<br style="clear:both" />
-						</div>
-						<!-- <hr /> -->
-						<?php if ( $connected->have_posts() ) : ?>
-							<div class="entry-content">
-								<h3>Ideas</h3>
-								<ul>
-									<span rel="apps4X:submission">
+
+							<!-- <hr /> -->
+							<?php if ( $connected->have_posts() ) : ?>
+								<h2>Ideas</h2>
+								<ul rel="apps4X:submission">
 										<?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
 											<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 										<?php endwhile; ?>
-									</span>
 								</ul>
-							</div>
-						<?php endif; ?>
+							<?php endif; ?>
+						</div>
+					</article>
+					<!-- #post -->
 
-					</article><!-- #post -->
-            <?php endwhile; // end of the loop. ?>
+            	<?php endwhile; // end of the loop. ?>
             <?php else: ?>
                 <h2>Not Found</h2>
             <?php endif; ?>
@@ -178,6 +185,6 @@ get_header();
         </div><!-- #content -->
     </div><!-- #primary -->
 <?php
-get_sidebar();
+//get_sidebar();
 get_footer();
 ?>

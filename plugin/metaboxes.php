@@ -51,6 +51,7 @@ class WPApps_Metaboxes {
                 //['id' => 'organizer', 'name' => __('Event Organizer', WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'edition', 'name' => __('Edition', WPAPPS_TRANS), 'type' => 'text'],
                 ['id' => 'register_url', 'name' => __('Registration link', WPAPPS_TRANS), 'type' => 'text_url'],
+                ['id' => 'datasets_url', 'name' => __('Datasets catalogue link', WPAPPS_TRANS), 'type' => 'text_url'],
                 ['id' => 'theme', 'name' => __("Theme", WPAPPS_TRANS), 'type' => 'select', 'options' => [
                     '' => _x('Select theme', 'theme', WPAPPS_TRANS),
                     'Public administration & policy' => _x('Public administration & policy', 'theme', WPAPPS_TRANS),
@@ -94,9 +95,10 @@ class WPApps_Metaboxes {
             'pages' => 'event',
             'fields' => [
                 ['id' => 'organizer', 'name' => __("Organizer", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
-                    ['id' => 'logo', 'name' => __('Organizer Logo', WPAPPS_TRANS), 'type' => 'image', 'cols' => 2],
+                    ['id' => 'logo', 'name' => __('Organizer Logo', WPAPPS_TRANS), 'type' => 'image'],
                     ['id' => 'organizer-name', 'name' => __('Organizer name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
-                    ['id' => 'organizer-website', 'name' => __('Organizer website', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2]
+                    ['id' => 'organizer-website', 'name' => __('Organizer website', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
+                    ['id' => 'organizer-coordinator', 'name' => __('Coordinator', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2]
                 ]]
             ]
         ];
@@ -106,7 +108,6 @@ class WPApps_Metaboxes {
             'fields' => [
                 ['id' => 'jury', 'name' => __("Jury", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
                     ['id' => 'jury-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
-
                     ['id' => 'jury-members', 'name' => __("Jury members", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => [
                         ['id' => 'agent-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2],
                         ['id' => 'agent-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2]
@@ -223,6 +224,7 @@ class WPApps_Metaboxes {
                 ['id' => 'keyword', 'name' => __("Keywords", WPAPPS_TRANS), 'type' => 'textarea'],
                 ['id' => 'homepage', 'name' => __("Homepage", WPAPPS_TRANS), 'type' => 'text_url'],
                 ['id' => 'download_url', 'name' => __("Download URL", WPAPPS_TRANS), 'type' => 'text_url'],
+                ['id' => 'demo_url', 'name' => __("Demo", WPAPPS_TRANS), 'type' => 'text_url'],
                 ['id' => 'license', 'name' => __("Theme", WPAPPS_TRANS), 'type' => 'select', 'options' => [
                     '' => _x('Select license', 'theme', WPAPPS_TRANS),
                     'Apache v2 License' => _x('Apache v2 License', 'theme', WPAPPS_TRANS),

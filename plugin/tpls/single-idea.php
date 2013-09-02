@@ -25,9 +25,8 @@ get_header();
                             odapps: http://apps4europe.eu/vocab/odapps#
                             foaf: http://xmlns.com/foaf/0.1/
                             dct: http://purl.org/dc/terms/
-                            dvia: http://data.eurecom.fr/ontology/dvia#
-                        typeof="odapps:AppConcept"
-                        about = "<?php echo the_permalink(); ?>">
+                            dvia: http://data.eurecom.fr/ontology/dvia#"
+                        about = "<?php echo the_permalink(); ?>" typeof="odapps:AppConcept">
                     <meta property="dct:language" content="<?php echo esc_attr($meta['language'][0]); ?>" />
                     <header class="entry-header">
                         <h1 class="entry-title" property="dct:title">
@@ -37,47 +36,33 @@ get_header();
                         </h1>
                     </header><!-- .entry-header -->
 
-                    <div class="entry-content" style="float:left" about = "<?php echo the_permalink(); ?>" >
-                        <p>
-                            <strong>Keywords:</strong>
+                    <div class="entry-content" about = "<?php echo the_permalink(); ?>" >
+                        <div style="float:left">Keywords:</div>
                             <?php 
                                 $keywords = explode(",", $meta['summary'][0]);
                                 foreach((array)$keywords as $keyword) { ?>
-                                    <span property="dct:subject">
+                                    <div property="dct:subject">
                                         <?php echo $keyword; ?>
-                                    </span>     
+                                    </div>     
                             <?php } ?>
-                        </p>
-                    </div><!-- .entry-content -->
-                    <br style="clear:both" />
 
-                    <div class="entry-content" style="float:left">
-                        <p>
-                            <strong>Themes:</strong>
-                            <span property="odapps:thene"><?php echo esc_attr($meta['theme'][0]); ?></span>
-                        </p>
-                    </div>
-                    <br style="clear:both" />
+                        <div style="float:left">Themes:</div>
+                        <div property="odapps:theme"><?php echo esc_attr($meta['theme'][0]); ?></div>
 
-                    <div class="entry-content" style="float:left">
-                        <p>
-                            <strong>Language:</strong>
-                            <span property="dct:language"><?php echo esc_attr($meta['language'][0]); ?></span>
-                        </p>
-                    </div>
-                    <br style="clear:both" />
+                        <div style="float:left">Language:</div>
+                        <div property="dct:language"><?php echo esc_attr($meta['language'][0]); ?></div>
 
-                    <div class="entry-content" style="float:left">
-                        <strong>Description: </strong>
-                        <span property="dct:description"> <?php the_content(); ?> </span>
-                    </div><!-- .entry-content -->
-                    <br style="clear:both" />
+                        <div style="float:left">Description: </div>
+                        <div property="dct:description"> <?php the_content(); ?> </div>
 
-                    <div class="entry-content" style="clear:both" >
-                        <p>
-                        <div style="float:left"><strong>Conceivers:</strong>&nbsp;</div>
+                        <div style="float:left">Homepage:</div>
+                        <div>
+                            <a rel="foaf:homepage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Visit homepage</a>
+                        </div>
                         <br style="clear:both" />
-                        <div style="float:left"  rel="apps4X:instigator">
+
+                        <h2>Instigators:</h2>
+                        <div rel="apps4X:instigator">
                             <?php foreach((array)$meta['conceivers'] as $conceiver) {
                                 $conceiver = unserialize($conceiver);
                                 list($name, $lastname, $affiliation, $email, $contact) = array(esc_attr($conceiver['conceiver-name']), esc_attr($conceiver['conceiver-surname']), esc_attr($conceiver['conceiver-affiliation']), esc_attr($conceiver['conceiver-email']), esc_attr($conceiver['contact-point']));
@@ -85,57 +70,47 @@ get_header();
                             <div  content = "<?php echo the_permalink() . $lastname . $name; ?>" typeof="foaf:Agent" about = "<?php echo the_permalink() . $lastname . $name; ?>">
                                 <span property="contact point"> <?php if ($contact) echo "<strong>Contact Point</strong>" ?> </span>
                                 <br />
-                                <strong>Name: </strong> <span property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
-                                <span property="foaf:name"> <?php echo $name . "\t" ; ?> </span>
-                                <br />    
-                                <strong>Affiliation: </strong> <span property="foaf:affiliation"> <?php echo $affiliation . ' ' ; ?> </span>
-                                <br />
-                                <strong>E-mail: </strong> <span property="foaf:email"> <?php echo $email; echo $contact ?></span>
-                                <br />
-                                </div> 
-                                 <br style="clear:both" />  
-                            <?php } ?>
-                        </div>
-                        <br style="clear:both" />
-                        </p>
-                        <p>
-                            <strong>Homepage:</strong>
-                            <a rel="foaf:homepage" href="<?php echo esc_attr($meta['homepage'][0]); ?>">Visit homepage</a>
-                        </p>
-                    </div>
-                    <hr />
+                                <div style="float:left">Name: </div> 
+                                <div> 
+                                    <span> property="foaf:lastname"> <?php echo $lastname . ' ' ; ?> </span>
+                                    <span property="foaf:name"> <?php echo $name . "\t" ; ?> </span>
+                                </div>    
+                                <div style="float:left">Affiliation: </div> 
+                                <div property="foaf:affiliation"> <?php echo $affiliation . ' ' ; ?> </div>
 
-                    <div style="float:left"><strong>Datasets:</strong>&nbsp;</div>
-                        <br style="clear:both" />
-                        <div class="entry-content" style="float:left"  rel="dvia:consumes">
-                            <?php foreach((array)$meta['datasets'] as $dataset) {
-                                $dataset = unserialize($dataset);
-                                list($dataset_url, $dataset_description) = array(esc_attr($dataset['dataset-url']), esc_attr($dataset['dataset-description']));
-                            ?>
-                                <div  class="entry-content" content = "<?php echo $dataset_url; ?>" typeof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
-                                    <strong>Dataset URL: </strong> 
-                                    <span> <?php echo $dataset_url . ' ' ; ?> </span>
-                                    <br/>
-                                    <strong>Dataset description: </strong> 
-                                    <span property="dvia:description"> <?php echo $dataset_description . "\t" ; ?> </span>
-                                </div> 
-                                <br style="clear:both" />  
+                                <div style="float:left">E-mail: </div> 
+                                <div property="foaf:email"> <?php echo $email; echo $contact ?></div>
+                            </div> 
                             <?php } ?>
                         </div>
                         <br style="clear:both" /> 
 
-                    <?php if ( $connected->have_posts() ) : ?>
-                        <div class="entry-content" style="clear:both" rel="odapps:implemented">
-                            <h3>Applications</h3>
-                            <ul>
-                                <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
-                                    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-                                <?php endwhile; ?>
-                            </ul>
-                        </div>
-                    <?php endif; ?>
+                        
 
-                </article><!-- #post -->
+                    <h2>Datasets:</h2>
+                        <?php foreach((array)$meta['datasets'] as $dataset) {
+                             $dataset = unserialize($dataset);
+                            list($dataset_url, $dataset_description) = array(esc_attr($dataset['dataset-url']), esc_attr($dataset['dataset-description']));
+                            ?>
+                            <div style="float:left" content = "<?php echo $dataset_url; ?>" typeof="dvia:Dataset" about = "<?php echo $dataset_url; ?>">
+                                Dataset URL: 
+                            </div> 
+                            <div> <?php echo $dataset_url . ' ' ; ?> </div>
+                            <div style="float:left">Dataset description: </div> 
+                            <div property="dvia:description"> <?php echo $dataset_description . "\t" ; ?> </div>
+                        <?php } ?> 
+                    <br style="clear:both" /> 
+
+                    <?php if ( $connected->have_posts() ) : ?>
+                        <h2>Applications</h2>
+                        <ul rel="odapps:implemented">
+                            <?php while ( $connected->have_posts() ) : $connected->the_post(); ?>
+                                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                            <?php endwhile; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div><!-- .entry-content -->
+            </article><!-- #post -->
             <?php endwhile; // end of the loop. ?>
             <?php else: ?>
                 <h2>Not Found</h2>
