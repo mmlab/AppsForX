@@ -117,7 +117,6 @@ class WPApps {
      * This function can display the overview page, could also be a require()
      */
     public function page_overview() { // ToDo
-        echo "<h2>WiP</h2><p>This could/should show a nice overview of pending submissions.</p>";
 
             // Find connected pages (for all posts)
        $posts = get_posts(
@@ -128,12 +127,23 @@ class WPApps {
          )
         );
 
-        echo "<p>The list of pending submissions.</p>";
+        echo "<h2>List of pending submissions.</h2>";
+        
+        echo "<h3>Applications</h3>";
         echo "<ul>" ;
         foreach ($posts as $post) { 
          // echo $post->post_title . PHP_EOL; //...
+            if ($post->post_type == "app")
+                echo "<li><a href=" . get_permalink( $post->ID ) . "> " . $post->post_title . "</a></li>" ;
+        }
+        echo "</ul>" ;
 
-         echo "<li><a href=" . get_permalink( $post->ID ) . "> " . $post->post_title . "</a></li>" ;
+        echo "<h3>Ideas</h3>";
+        echo "<ul>" ;
+        foreach ($posts as $post) { 
+         // echo $post->post_title . PHP_EOL; //...
+            if ($post->post_type == "idea")
+                echo "<li><a href=" . get_permalink( $post->ID ) . "> " . $post->post_title . "</a></li>" ;
         }
         echo "</ul>" ;
 

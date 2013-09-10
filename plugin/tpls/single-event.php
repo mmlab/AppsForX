@@ -42,7 +42,7 @@ get_header();
 
 						<div class="entry-content" >
 							<?php if($meta['logo'][0]): ?>	
-								<div style="float:right" margin: 0 25px 25px 0" rel="schema:logo">
+								<div style="float:right" margin= "0 25px 25px 0" rel="schema:logo">
 									<?php echo wp_get_attachment_image($meta['logo'][0]); ?>  
 								</div>
 							<?php endif ?>
@@ -80,7 +80,7 @@ get_header();
 							<div style="float:left">Datasets' catalogue: </div>
 							<div><a property="schema:url" href="<?php echo esc_attr($meta['datasets_url'][0]); ?>">Catalogue of datasets</a></div>
 							
-	                        <div style="float:left">Themes: </div> &nbsp;
+	                        <div style="float:left">Themes: </div> 
 	                        <div property="odapps:theme"><?php echo esc_attr($meta['theme'][0]); ?></div>
 	                        <br style="clear:both" />
 

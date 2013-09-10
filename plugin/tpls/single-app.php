@@ -65,22 +65,23 @@ get_header();
 
                             <?php if ($meta['license'][0]): ?>
                                 <div style="float:left">License:</div>
+                                    <span>
                                     <?php 
                                         switch ($meta['license'][0]) {
                                             case "Apache v2 License":
                                                 echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href= \"http://www.apache.org/licenses/LICENSE-2.0.html\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "GPL v2":
-                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "MIT License":
-                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Mozilla Public License Version 2.0":
-                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "LGPL v2.1":
-                                                echo "<a property=\"odapps:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"odapps:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "BSD (3-Clause) License":
                                                 echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"http://opensource.org/licenses/BSD-3-Clause\" >" . esc_attr($meta['license'][0]) . "</a>" ;
@@ -89,16 +90,16 @@ get_header();
                                                 echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"http://opensource.org/licenses/Artistic-2.0\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "GPL v3":
-                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "LGPL v3":
-                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Affero GPL":
                                                 echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"http://www.gnu.org/licenses/agpl-3.0.txt\" >" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "Public Domain (Unlicense)":
-                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=" . esc_attr($meta['license'][0]) . ">" . esc_attr($meta['license'][0]) . "</a>" ;
+                                                echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"" . esc_attr($meta['license'][0]) . "\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                             case "No License":
                                                 echo esc_attr($meta['license'][0]) ;
@@ -110,7 +111,7 @@ get_header();
                                                 echo "<a property=\"dvia:hasLicense\" typeof=\"dct:License\" href=\"http://opensource.org/licenses/BSD-2-Clause\">" . esc_attr($meta['license'][0]) . "</a>" ;
                                                 break;
                                         } ?>
-                                    </p>
+                                    </span>
                                 <?php endif ?> 
                         <br style="clear:both" />
 
@@ -118,7 +119,7 @@ get_header();
                             <div>
                                 <div style="float:left">Language:</div>
                                 <div property="dct:language"><?php echo esc_attr($meta['language'][0]); ?></div>
-                            </p>
+                            </div>
                             <br style="clear:both" />
                         <?php endif ?>
 
