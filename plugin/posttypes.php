@@ -70,8 +70,8 @@ class WPApps_Posttypes {
 
     // set browsable event fields, handle display
     function custom_event_columns($columns) {
-        unset($columnsarray("date"));
-        $columnsarray('when') = "When";
+        unset($columns["date"]);
+        $columns['when'] = "When";
         return $columns;
     }
 
