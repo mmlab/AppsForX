@@ -100,7 +100,7 @@ class WPApps {
 
             // Add admin css
             add_action('admin_init', function() {
-                wp_register_style('wpapps-admin', WPAPPS_URL . '/style/wpapps-admin.css', array(),  self::WPAPPS_VERSION);
+                wp_register_style('wpapps-admin', WPAPPS_URL . '/style/wpapps-admin.css', array(),  WPAPPS_VERSION);
                 wp_enqueue_style('wpapps-admin');
             });
         }
@@ -194,11 +194,11 @@ class WPApps {
 
         register_activation_hook(__FILE__, function() use ($p2p) {
             if (!file_exists($p2p))
-                wpapps_error(__("Some files appear to be missing. Git has to be cloned recursively!", WPAPPS_TRANS));
+                $this->wpapps_error(__("Some files appear to be missing. Git has to be cloned recursively!", WPAPPS_TRANS));
 
             $pfile = WPAPPS_PATH . '/lib/posts-to-posts/core/side-post.php';
             if (!is_writable($pfile))
-                wpapps_error(sprintf(__("Can't write to %s which has to be patched. Apply patch manually or make the file writable.", WPAPPS_TRANS), $pfile));
+                $this->wpapp_error(sprintf(__("Can't write to %s which has to be patched. Apply patch manually or make the file writable.", WPAPPS_TRANS), $pfile));
             else
                 file_put_contents($pfile, str_replace("->edit_posts", "->read", file_get_contents($pfile)));
         });
