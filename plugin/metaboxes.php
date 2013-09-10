@@ -39,7 +39,7 @@ class WPApps_Metaboxes {
     }
 
     function add_event_metaboxes($meta_boxes) {
-        $meta_boxesarray() = array(
+        $meta_boxes[] = array(
             'title' => _x('Information', 'event-edit', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
@@ -74,9 +74,10 @@ class WPApps_Metaboxes {
             ),
             'context' => 'side',
             'priority' => 'high'
-        );
+        )
+;
 
-        $meta_boxesarray() = array(
+        $meta_boxes[] = array(
             'title' => _x('Contact Point', 'event-edit', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
@@ -91,7 +92,7 @@ class WPApps_Metaboxes {
         );
 
 
-		$meta_boxesarray() = array(
+        $meta_boxes[] = array(
             'title' => __('Organizer', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
@@ -103,7 +104,7 @@ class WPApps_Metaboxes {
                 ))
             )
         );
-        $meta_boxesarray() = array(
+        $meta_boxes[] = array(
             'title' => __('Jury', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
@@ -116,7 +117,7 @@ class WPApps_Metaboxes {
                 ))
             )
         );
-        $meta_boxesarray() = array(
+        $meta_boxes[] = array(
             'title' => __('Awards', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
@@ -128,7 +129,7 @@ class WPApps_Metaboxes {
                 ))
             )
         );
-        $meta_boxesarray() = array(
+        $meta_boxes[] = array(
             'title' => __('Sponsors', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
@@ -143,7 +144,7 @@ class WPApps_Metaboxes {
     }
 
     function add_idea_metaboxes($meta_boxes) {
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => _x('Information', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
@@ -177,7 +178,7 @@ class WPApps_Metaboxes {
             'priority' => 'high'
         );
 
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => __('Conceivers', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
@@ -193,7 +194,7 @@ class WPApps_Metaboxes {
             )
         );
 
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => __("Datasets", 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
@@ -204,7 +205,7 @@ class WPApps_Metaboxes {
             )
         );
         /*
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => _x('People', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
@@ -218,7 +219,7 @@ class WPApps_Metaboxes {
     }
 
     function add_app_metaboxes($meta_boxes) {
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => _x("Information", 'app-edit', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
@@ -253,7 +254,7 @@ class WPApps_Metaboxes {
             'context' => 'side',
             'priority' => 'high'
         );
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => __("Credits", WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
@@ -266,7 +267,7 @@ class WPApps_Metaboxes {
                 ))
             )
         );
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => __("Datasets", WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
@@ -276,7 +277,7 @@ class WPApps_Metaboxes {
                 ))
             )
         );
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => _x("Platform & Tools", 'app-platform-metabox', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
@@ -296,7 +297,7 @@ class WPApps_Metaboxes {
     }  
 
     function add_submission_metaboxes($meta_boxes) {
-        $meta_boxesarray() = array(
+        $metaboxes[] = array(
             'title' => _x("Information", 'app-edit', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
