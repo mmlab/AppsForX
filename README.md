@@ -24,14 +24,17 @@ Installation
 
 Your server might vaporize if these minimum requirements aren't met:
 
- * PHP >= 5.4 (might change in the future to have PHP 5.3 compat)
+ * PHP >= 5.3
  * WordPress >= 3.5
 
-#### Download
-
-Plugin zip file: [appsforx.zip](http://osoc13.github.io/AppsForX/appsforx.zip).
-
 #### Installation
+
+1. Clone the plug-in
+2. pull in the submodules
+```bash
+git submodule init
+git submodule update
+```
 
 To use the plugin, follow these steps:
 
@@ -39,7 +42,7 @@ To use the plugin, follow these steps:
    ![Apps4X WordPress](../master/meta/install.png)
  * You can now add new events, ideas and apps directly from the administration area
  * If you want users to be able to submit ideas/apps, give them at least the "Submitter" role.
-   You may want to enable open user registration as well. You can find these parameters under Settings > General.    
+ * You may want to enable open user registration as well. You can find these parameters under Settings > General.    
    ![Submitter role](http://i.imgur.com/btTboFA.png)
  * You can link from your theme files to the event pages. 
    If you want event/ideas/app archives to show up in your main WordPress navigation menu,

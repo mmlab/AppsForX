@@ -1,9 +1,9 @@
-[submodule "plugin/lib/posts-to-posts"]
-	path = plugin/lib/posts-to-posts
+[submodule "lib/posts-to-posts"]
+	path = lib/posts-to-posts
 	url = https://github.com/scribu/wp-posts-to-posts.git
-[submodule "plugin/lib/cmb"]
-	path = plugin/lib/cmb
+[submodule "lib/cmb"]
+	path = lib/cmb
 	url = https://github.com/humanmade/Custom-Meta-Boxes.git
-[submodule "plugin/lib/cpt-archive-menu"]
-	path = plugin/lib/cpt-archive-menu
+[submodule "lib/cpt-archive-menu"]
+	path = lib/cpt-archive-menu
 	url = https://github.com/AllStruck/custom-post-type-archive-menu.git
