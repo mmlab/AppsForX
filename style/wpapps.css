@@ -1,0 +1,35 @@
+/*
+ * single event styles
+ *
+ *
+ */
+ 
+.titleabbr{
+    display:none;
+}
+
+.image{
+    float:right;
+    padding:12px;
+}
+
+.info-block.image{
+    border-style:solid;
+    border-width:1px;
+    border-color: #CCCCCC;
+}
+
+.starttime,.endtime{
+    display:inline;
+}
+
+.location,.edition{
+    display:inline;
+}
+
+.general-info{
+    font-size:smaller;
+}
+
+
+
