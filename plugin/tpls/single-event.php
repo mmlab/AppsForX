@@ -42,7 +42,7 @@ get_header();
 
 						<div class="entry-content" >
 							<?php if($meta['logo'][0]): ?>	
-								<div style="float:right; margin:0 25px 25px 0" rel="schema:logo">
+								<div style="float:right" margin= "0 25px 25px 0" rel="schema:logo">
 									<?php echo wp_get_attachment_image($meta['logo'][0]); ?>  
 								</div>
 							<?php endif ?>
