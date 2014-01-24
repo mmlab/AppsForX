@@ -30,10 +30,25 @@ Your server might vaporize if these minimum requirements aren't met:
 #### Installation
 
 1. Clone the plug-in
-2. pull in the submodules
+
+2. pull in the submodules and make the plugin happy
+
 ```bash
+
 git submodule init
+
 git submodule update
+
+cd lib/posts-to-posts/
+
+git submodule init
+
+git submodule update
+
+cd ../../
+
+chmod 777 lib/posts-to-posts/core/side-post.php
+
 ```
 
 To use the plugin, follow these steps:
@@ -49,9 +64,6 @@ To use the plugin, follow these steps:
    go to Appearance > Menus > Add a new menu, choose the wanted archive, then assign the menu to the primary location.    
    ![Navigation menu](../master/meta/menus.png)
 
-#### Troubleshooting
-
-Please make sure that your wp-content/* folders are properly chmodded.
 
 Copyright
 ---------
