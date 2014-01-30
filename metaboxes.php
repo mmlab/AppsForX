@@ -44,7 +44,7 @@ class WPApps_Metaboxes {
             'pages' => 'event',
             'fields' => array(
                 array('id' => 'logo', 'name' => __('Event Logo', WPAPPS_TRANS), 'type' => 'image'),
-				array('id' => 'abbreviated_title', 'name' => __('Abbreviated Title', WPAPPS_TRANS), 'type' => 'text'),
+                array('id' => 'abbreviated_title', 'name' => __('Abbreviated Title', WPAPPS_TRANS), 'type' => 'text'),
                 array('id' => 'when_start', 'name' => __('Event Start', WPAPPS_TRANS), 'type' => 'datetime_unix'),
                 array('id' => 'when_end', 'name' => __('Event End', WPAPPS_TRANS), 'type' => 'datetime_unix'),
                 array('id' => 'location', 'name' => __('Event Location', WPAPPS_TRANS), 'type' => 'textarea'),
@@ -68,39 +68,37 @@ class WPApps_Metaboxes {
                     'Welfare' => _x('Welfare', 'theme', WPAPPS_TRANS),
                     'Work & Economy' => _x('Work & Economy', 'theme', WPAPPS_TRANS),
                     'Life Home' => _x('Life/Home', 'theme', WPAPPS_TRANS)
-                    )
-                ),
+                )),
                 
             ),
             'context' => 'side',
             'priority' => 'high'
-        )
-;
+        );
 
         $meta_boxes[] = array(
             'title' => _x('Contact Point', 'event-edit', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
                 array('id' => 'event-contact-point', 'name' => __("Contact Point", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'contact-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'contact-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'contact-email', 'name' => __('E-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'contact-phone', 'name' => __('Phone Number', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'contact-fax', 'name' => __('Fax Number', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
+                array('id' => 'contact-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'contact-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'contact-email', 'name' => __('E-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'contact-phone', 'name' => __('Phone Number', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'contact-fax', 'name' => __('Fax Number', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
                 )),
             )
         );
 
 
-        $meta_boxes[] = array(
+		$meta_boxes[] = array(
             'title' => __('Organizer', WPAPPS_TRANS),
             'pages' => 'event',
             'fields' => array(
                 array('id' => 'organizer', 'name' => __("Organizer", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'logo', 'name' => __('Organizer Logo', WPAPPS_TRANS), 'type' => 'image'),
-                    array('id' => 'organizer-name', 'name' => __('Organizer name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'organizer-website', 'name' => __('Organizer website', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'organizer-coordinator', 'name' => __('Coordinator', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2)
+                array('id' => 'logo', 'name' => __('Organizer Logo', WPAPPS_TRANS), 'type' => 'image'),
+                array('id' => 'organizer-name', 'name' => __('Organizer name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'organizer-website', 'name' => __('Organizer website', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'organizer-coordinator', 'name' => __('Coordinator', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2)
                 ))
             )
         );
@@ -109,12 +107,12 @@ class WPApps_Metaboxes {
             'pages' => 'event',
             'fields' => array(
                 array('id' => 'jury', 'name' => __("Jury", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'jury-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'jury-members', 'name' => __("Jury members", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                        array('id' => 'agent-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                        array('id' => 'agent-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
-                    ))
+                array('id' => 'jury-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'jury-members', 'name' => __("Jury members", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
+                array('id' => 'agent-name', 'name' => __('Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'agent-surname', 'name' => __('Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
                 ))
+             ))
             )
         );
         $meta_boxes[] = array(
@@ -122,10 +120,10 @@ class WPApps_Metaboxes {
             'pages' => 'event',
             'fields' => array(
                 array('id' => 'award', 'name' => __("Award", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'award-prize', 'name' => __("Prize", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'award-sponsor-logo', 'name' => __('Award Sponsor Logo', WPAPPS_TRANS), 'type' => 'image', 'cols' => 2),
-                    array('id' => 'award-sponsor-name', 'name' => __("Award Sponsor name", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'award-sponsor-website', 'name' => __("Award Sponsor website", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
+                array('id' => 'award-prize', 'name' => __("Prize", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'award-sponsor-logo', 'name' => __('Award Sponsor Logo', WPAPPS_TRANS), 'type' => 'image', 'cols' => 2),
+                array('id' => 'award-sponsor-name', 'name' => __("Award Sponsor name", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'award-sponsor-website', 'name' => __("Award Sponsor website", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
                 ))
             )
         );
@@ -134,9 +132,9 @@ class WPApps_Metaboxes {
             'pages' => 'event',
             'fields' => array(
                 array('id' => 'sponsor', 'name' => __("Sponsor", WPAPPS_TRANS), 'type' => 'group', 'fields' => array(
-                    array('id' => 'sponsor-logo', 'name' => __('Sponsor Logo', WPAPPS_TRANS), 'type' => 'image', 'cols' => 2),
-                    array('id' => 'sponsor-name', 'name' => __("Sponsor name", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
-                    array('id' => 'sponsor-website', 'name' => __("Sponsor website", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
+                array('id' => 'sponsor-logo', 'name' => __('Sponsor Logo', WPAPPS_TRANS), 'type' => 'image', 'cols' => 2),
+                array('id' => 'sponsor-name', 'name' => __("Sponsor name", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2),
+                array('id' => 'sponsor-website', 'name' => __("Sponsor website", WPAPPS_TRANS), 'type' => 'text', 'cols' => 2)
                 ))
             )
         );
@@ -144,7 +142,7 @@ class WPApps_Metaboxes {
     }
 
     function add_idea_metaboxes($meta_boxes) {
-        $metaboxes[] = array(
+        $meta_boxes[] = array(
             'title' => _x('Information', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
@@ -178,48 +176,48 @@ class WPApps_Metaboxes {
             'priority' => 'high'
         );
 
-        $metaboxes[] = array(
+        $meta_boxes[] = array(
             'title' => __('Conceivers', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
                 array('id' => 'conceivers', 'name' => __("Conceivers", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'conceiver-name', 'name' => __('Conceiver Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'conceiver-surname', 'name' => __('Conceiver Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'conceiver-affiliation', 'name' => __('Conceiver affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'conceiver-email', 'name' => __('Conceiver e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2)
+                array('id' => 'conceiver-name', 'name' => __('Conceiver Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'conceiver-surname', 'name' => __('Conceiver Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'conceiver-affiliation', 'name' => __('Conceiver affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'conceiver-email', 'name' => __('Conceiver e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2)
                 )
                 ) 
                 // array('id' => 'contact', 'name' => __('Contact', WPAPPS_TRANS), 'type' => 'text') // should have email/phone number? -> make abstract
             )
         );
 
-        $metaboxes[] = array(
+        $meta_boxes[] = array(
             'title' => __("Datasets", 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
             'fields' => array(
                 array('id' => 'datasets', 'name' => __("Datasets", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2) ,
-                    array('id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) 
+                array('id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2) ,
+                array('id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) 
                 ))
             )
         );
         /*
-        $metaboxes[] = array(
+        $meta_boxes[] = [
             'title' => _x('People', 'idea-edit', WPAPPS_TRANS),
             'pages' => 'idea',
-            'fields' => array(
-                array('id' => 'conceivers', 'name' => __('Conceivers', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true),
-                array('id' => 'contact', 'name' => __('Contact', WPAPPS_TRANS), 'type' => 'text') // should have email/phone number? -> make abstract
+            'fields' => [
+                ['id' => 'conceivers', 'name' => __('Conceivers', WPAPPS_TRANS), 'type' => 'text', 'repeatable' => true],
+                ['id' => 'contact', 'name' => __('Contact', WPAPPS_TRANS), 'type' => 'text'] // should have email/phone number? -> make abstract
                 // revisions (revises|revised|implements)
-            )
-        );
+            ]
+        ];
         */
         return $meta_boxes;
     }
 
     function add_app_metaboxes($meta_boxes) {
-        $metaboxes[] = array(
+        $meta_boxes[] = array(
             'title' => _x("Information", 'app-edit', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
@@ -249,31 +247,31 @@ class WPApps_Metaboxes {
                     '' => _x('Other', 'original-derivative', WPAPPS_TRANS),
                     'Original Work' => _x('Original Work', 'original-derivative', WPAPPS_TRANS),
                     'Derivative Work' => _x('Derivative Work', 'original-derivative', WPAPPS_TRANS)
-                )),
+               )),
             ),
             'context' => 'side',
             'priority' => 'high'
         );
-        $metaboxes[] = array(
+        $meta_boxes[] = array(
             'title' => __("Credits", WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
                 array('id' => 'creators', 'name' => __("Creators", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'creator-name', 'name' => __('Creator Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'creator-surname', 'name' => __('Creator Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'creator-affiliation', 'name' => __('Creator affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'creator-email', 'name' => __('Creator e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
-                    array('id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2)
+                array('id' => 'creator-name', 'name' => __('Creator Name', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'creator-surname', 'name' => __('Creator Surname', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'creator-affiliation', 'name' => __('Creator affiliation', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'creator-email', 'name' => __('Creator e-mail', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) ,
+                array('id' => 'contact-point', 'name' => __('Contact Point', WPAPPS_TRANS), 'type' => 'checkbox', 'cols' => 2)
                 ))
             )
         );
         $metaboxes[] = array(
             'title' => __("Datasets", WPAPPS_TRANS),
             'pages' => 'app',
-            'fields' => array(
+             'fields' => array(
                 array('id' => 'datasets', 'name' => __("Datasets", WPAPPS_TRANS), 'type' => 'group', 'repeatable' => true, 'fields' => array(
-                    array('id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2) ,
-                    array('id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) 
+                array('id' => 'dataset-url', 'name' => __('Dataset URL', WPAPPS_TRANS), 'type' => 'text_url', 'cols' => 2) ,
+                array('id' => 'dataset-description', 'name' => __('Dataset description', WPAPPS_TRANS), 'type' => 'text', 'cols' => 2) 
                 ))
             )
         );
@@ -297,7 +295,7 @@ class WPApps_Metaboxes {
     }  
 
     function add_submission_metaboxes($meta_boxes) {
-        $metaboxes[] = array(
+        $meta_boxes[] = array(
             'title' => _x("Information", 'app-edit', WPAPPS_TRANS),
             'pages' => 'app',
             'fields' => array(
@@ -320,7 +318,7 @@ class WPApps_Metaboxes {
                     'No License' => _x('No License', 'theme', WPAPPS_TRANS),
                     'Eclipse Public License v1.0' => _x('Eclipse Public License v1.0', 'theme', WPAPPS_TRANS),
                     'BSD 2-Clause license' => _x('BSD 2-Clause license', 'theme', WPAPPS_TRANS)
-                )),
+                 )),
                 array('id' => 'language', 'name' => __("Language", WPAPPS_TRANS), 'type' => 'text', 'desc' => __("The application's language.<br />Eg. 'English', 'Dutch'", WPAPPS_TRANS)),
                 array('id' => 'ori-deri', 'name' => _x("Original Vs Derivative Work", 'original-derivative', WPAPPS_TRANS), 'type' => 'select', 'options' => array(
                     '' => _x('Other', 'original-derivative', WPAPPS_TRANS),

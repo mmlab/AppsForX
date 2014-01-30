@@ -89,7 +89,7 @@ class WPApps {
 
             // Add the menu/submenu items: Apps4X > Overview|Events|Ideas|Apps
             add_action('admin_menu', function() {
-                add_menu_page(__("Apps4X", WPAPPS_TRANS), __("Apps4X", WPAPPS_TRANS), "edit_ideas", "wpapps",array($this, "page_overview"), WPAPPS_URL . "/style/calendar16.png", (string)(27+M_PI)); // rule of pi
+                add_menu_page(__("Apps4X", WPAPPS_TRANS), __("Apps4X", WPAPPS_TRANS), "edit_ideas", "wpapps", array($this, "page_overview"), WPAPPS_URL . "/style/calendar16.png", (string)(27+M_PI)); // rule of pi
 
                 add_submenu_page("wpapps", __("Overview", WPAPPS_TRANS), __("Overview", WPAPPS_TRANS), "edit_ideas", "wpapps", array($this, "page_overview")); // overwrite menu title
                 add_submenu_page("wpapps", __("Events", WPAPPS_TRANS), __("Events", WPAPPS_TRANS), "edit_events", "edit.php?post_type=event");
@@ -204,11 +204,11 @@ class WPApps {
 
         register_activation_hook(__FILE__, function() use ($p2p) {
             if (!file_exists($p2p))
-                $this->wpapps_error(__("Some files appear to be missing. Git has to be cloned recursively!", WPAPPS_TRANS));
+                sprintf(__("Some files appear to be missing. Git has to be cloned recursively!", WPAPPS_TRANS));
 
             $pfile = WPAPPS_PATH . '/lib/posts-to-posts/core/side-post.php';
             if (!is_writable($pfile))
-                $this->wpapp_error(sprintf(__("Can't write to %s which has to be patched. Apply patch manually or make the file writable.", WPAPPS_TRANS), $pfile));
+                sprintf(__("Can't write to %s which has to be patched. Apply patch manually or make the file writable.", WPAPPS_TRANS), $pfile);
             else
                 file_put_contents($pfile, str_replace("->edit_posts", "->read", file_get_contents($pfile)));
         });

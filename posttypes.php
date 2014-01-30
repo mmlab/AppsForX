@@ -113,7 +113,7 @@ class WPApps_Posttypes {
             'hierarchical' => false,
             'supports' => array( 'title', 'editor', 'comments' ),
             'map_meta_cap' => true,
-            'capabilities' => array('read' => 'read_events')
+            'capabilities' => array('read' => 'read_events' /*NOT read_event*/)
         ));
     }
 
@@ -145,7 +145,7 @@ class WPApps_Posttypes {
             'hierarchical' => false,
             'supports' => array( 'title', 'editor', 'comments' ),
             'map_meta_cap' => true,
-            'capabilities' => array('read' => 'read_events' /*NOT read_event*/)
+            'capabilities' =>  array('read' => 'read_events' /*NOT read_event*/)
         ));
     }
 
